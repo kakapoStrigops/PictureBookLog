@@ -31,7 +31,7 @@
 
 ## 設計書
 - ER図（https://drive.google.com/file/d/1Ziv97VEDLkn_elFggkdPepUMcUJOez5R/view?usp=sharing）
-- テーブル定義書（作成中）
+- テーブル定義書（https://docs.google.com/spreadsheets/d/1riFXMhdPgTCaUffmbZ05RuGwki-sRt66Emvt6stE12o/edit?usp=sharing）
 - 詳細設計書（作成中）
 
 ## 開発環境
