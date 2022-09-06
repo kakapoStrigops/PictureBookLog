@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# 会員(members)テーブル作成用
 class DeviseCreateMembers < ActiveRecord::Migration[6.1]
   def change
     create_table :members do |t|

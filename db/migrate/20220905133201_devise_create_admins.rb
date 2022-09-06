@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# 管理者(admins)テーブル作成用
 class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
   def change
     create_table :admins do |t|
