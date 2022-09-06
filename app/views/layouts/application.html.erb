@@ -11,12 +11,13 @@
   </head>
 
   <body>
-    <% if admin_signed_in? %>
-      <%= render 'admin/header' %>
-    <% else %>
-      <%= render 'public/header' %>
-    <% end %>
-
+    <header>
+      <% if admin_signed_in? %>
+        <%= render 'admin/header' %>
+      <% else %>
+        <%= render 'public/header' %>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
