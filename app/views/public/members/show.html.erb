@@ -1,5 +1,7 @@
 
 <h4>プロフィール</h4>
 <div>ニックネーム：<%= @member.nickname %></div>
-<div><%= @member.year_of_birth %>年生まれ</div>
+<div>
+  <%= Date.today.strftime("%Y%m%d").to_i/10000 - @member.year_of_birth.to_i %>歳
+</div>
 
