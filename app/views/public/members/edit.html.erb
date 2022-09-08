@@ -32,6 +32,11 @@
     <%= f.text_area :self_introduction, autocomplete: "self_introduction" %>
   </div>
 
+  <div class="field">
+    <%= f.label :profile_image, "プロフィール画像" %><br />
+    <%= f.file_field :profile_image, accept: "image/*" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "変更内容を保存" %>
   </div>
