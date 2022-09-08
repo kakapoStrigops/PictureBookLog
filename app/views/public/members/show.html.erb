@@ -1,5 +1,14 @@
 
 <h4>プロフィール</h4>
+
+<div>
+  <% if @member.profile_image.attached? %>
+    <%= image_tag @member.profile_image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+</div>
+
 <div>ニックネーム：<%= @member.nickname %></div>
 <div>
   <%= Date.today.strftime("%Y%m%d").to_i/10000 - @member.year_of_birth.to_i %>歳

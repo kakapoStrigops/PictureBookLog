@@ -22,7 +22,7 @@ class Public::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name, :name_kana, :nickname, :year_of_birth, :email, :self_introduction)
+    params.require(:member).permit(:name, :name_kana, :nickname, :year_of_birth, :email, :self_introduction, :profile_image)
   end
 
 end
