@@ -9,5 +9,6 @@ class Member < ApplicationRecord
   validates :nickname, presence: true
   validates :year_of_birth, presence: true, length: { is: 4}
   validates :email, presence: true
+  validates :self_introduction, length: {maximum: 200}
 
 end
