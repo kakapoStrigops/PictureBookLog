@@ -1,0 +1,24 @@
+
+<h4>プロフィール</h4>
+<div>ニックネーム：<%= @member.nickname %></div>
+<div>
+  <%= Date.today.strftime("%Y%m%d").to_i/10000 - @member.year_of_birth.to_i %>歳
+</div>
+<div>
+  自己紹介<br>
+  <%= @member.self_introduction %>
+</div>
+
+<div>
+  <%= link_to "編集する", edit_member_path(current_member.id) %>
+</div>
+
+
+<h4>絵本を探す</h4>
+
+
+<h4>検討リスト</h4>
+
+
+<h4>レビューリスト</h4>
+
