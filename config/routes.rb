@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'members/show'
+    get 'members/edit'
+    get 'members/update'
+    get 'members/index'
+  end
   # 会員用（登録・ログイン）
   devise_for :members,skip: [:passwords], controllers: {
   registrations: "public/registrations",
