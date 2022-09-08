@@ -1,0 +1,2 @@
+class ReviewTargetAgeTag < ApplicationRecord
+end
