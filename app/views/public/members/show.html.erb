@@ -1,7 +1,13 @@
 
 <h4>プロフィール</h4>
 
-<div><%= image_tag @member.profile_image, size: "200x200" %></div>
+<div>
+  <% if @member.profile_image.attached? %>
+    <%= image_tag @member.profile_image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+</div>
 
 <div>ニックネーム：<%= @member.nickname %></div>
 <div>
