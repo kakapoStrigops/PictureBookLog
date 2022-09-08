@@ -1,0 +1,2 @@
+class TargetAgeTag < ApplicationRecord
+end
