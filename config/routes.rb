@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get "/about"=>"homes#about"
     resources :members, only: [:show, :edit, :update, :index]
     resources :books, only: [:new, :index]
+    resources :candidate_posts, only: [:index, :update]
   end
 
 

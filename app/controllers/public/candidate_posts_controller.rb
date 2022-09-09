@@ -1,0 +1,7 @@
+class Public::CandidatePostsController < ApplicationController
+  def index
+  end
+
+  def update
+  end
+end
