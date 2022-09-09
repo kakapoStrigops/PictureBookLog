@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # 会員用
   devise_for :members,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -12,6 +11,8 @@ Rails.application.routes.draw do
     get "/about"=>"homes#about"
     resources :members, only: [:show, :edit, :update, :index]
     resources :books, only: [:new, :index]
+    resources :reviews, only: [:new, :create, :index, :show, :edit, :update]
+    resources :comments, only: [:new, :create, :edit, :update]
   end
 
 
