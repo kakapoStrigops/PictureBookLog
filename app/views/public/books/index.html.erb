@@ -9,10 +9,13 @@
 </div>
 
 <% @books.each do |book| %>
-  <div class="commic-data">
+  <div class="book-data">
     <%= link_to (image_tag(book.medium_image_url)), book.item_url %>
     <%= book.title %>
-    <%= book.sales_date %>
-    <%= book.isbn%>
+    作者：<%= book.author %>
+    出版社：<%= book.publisher_name %>
+    出版日：<%= book.sales_date %>
+    ISBNコード:<%= book.isbn%>
+    <%= book.item_caption%>
   </div>
 <% end %>
