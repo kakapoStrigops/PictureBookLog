@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # 会員用
   devise_for :members,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -21,6 +22,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => "homes#top"
+    resources :members, only: [:index, :show, :edit, :update]
+    resources :reviews, only: [:index, :show, :edit, :update]
+    resources :tags, only: [:index]
+    resources :genre_tags, only: [:new, :create, :edit, :update]
+    resources :target_age_tags, only: [:new, :create, :edit, :update]
   end
 
 end
