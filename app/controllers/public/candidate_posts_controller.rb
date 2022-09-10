@@ -7,6 +7,7 @@ class Public::CandidatePostsController < ApplicationController
   end
 
   def index
+    @candidate_posts = CandidatePost.where(member_id: current_member.id)
   end
 
   def update

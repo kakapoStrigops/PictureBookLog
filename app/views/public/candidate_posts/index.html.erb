@@ -1,2 +1,17 @@
-<h1>Public::CandidatePosts#index</h1>
-<p>Find me in app/views/public/candidate_posts/index.html.erb</p>
+検討リスト
+
+<% @candidate_posts.each do |candidate_post| %>
+<div>
+  <% RakutenWebService::Books::Book.search(isbn: candidate_post.isbn_code).each do |book| %>
+    <td><%= link_to (image_tag(book.medium_image_url)), book.item_url %></td>
+    <td>
+      <%= book.title %><br>
+      作者：<%= book.author %>
+      出版社：<%= book.publisher_name %>
+      出版日：<%= book.sales_date %><br>
+      ISBNコード：<%= book.isbn %><br>
+      <%= book.item_caption%>
+    </td>
+  <% end %>
+</div>
+<% end %>
