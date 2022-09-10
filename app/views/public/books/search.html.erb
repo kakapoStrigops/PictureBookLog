@@ -16,13 +16,11 @@
     ISBNコード:<%= book.isbn%>
     <%= book.item_caption%>
 
-    <%= form_with model: @book, url: books_path do |f| %>
-      <%= f.hidden_field :isbn, book.isbn %>
-      <%= f.submit_tag '登録する' %>
+    <%= form_with model: @candidate_post, url: candidate_posts_path do |f| %>
+      <%= f.hidden_field :member_id, value: current_member.id %>
+      <%= f.hidden_field :isbn_code, value: book.isbn %>
+      <%= f.submit '登録する' %>
     <% end %>
-
-
-
 
   </div>
 <% end %>
