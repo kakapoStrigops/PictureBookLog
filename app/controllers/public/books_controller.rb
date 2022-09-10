@@ -2,8 +2,7 @@ class Public::BooksController < ApplicationController
 
   def search
     @books = []
-    @book = Book.new
-    # @candidate_post = CandidatePost.new
+    @candidate_post = CandidatePost.new
     if params[:keyword]
       @books = RakutenWebService::Books::Book.search({
         title: params[:keyword],
@@ -30,6 +29,8 @@ class Public::BooksController < ApplicationController
         })
     end
   end
+
+  private
 
   def book_params
     params.require(:book).permit(:title, :author, :publisher, :date_of_publication, :isbn_code, :book_image_url, :rakuten_books_url)
