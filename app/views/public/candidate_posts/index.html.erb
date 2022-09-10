@@ -1,4 +1,4 @@
-検討リスト
+マイ検討リスト
 
 <% @candidate_posts.each do |candidate_post| %>
 <div>
@@ -10,6 +10,15 @@
       出版社：<%= candidate_post.publisher %>
       出版日：<%= candidate_post.date_of_publication %><br>
       ISBNコード：<%= candidate_post.isbn_code %><br>
+      ステータス：<%= candidate_post.consideration_status_i18n %>
+      メモ：<%= candidate_post.memo %>
+
+      <%= form_with model: candidate_post, url: candidate_post_path(candidate_post.id), local: true do |f| %>
+            <td><%= f.select :consideration_status, CandidatePost.consideration_statuses.keys.map {|k| [I18n.t("enums.candidate_post.consideration_status.#{k}"), k]} %></td>
+            <td><%= f.text_area :memo %></td>
+            <td><%= f.submit "更新", class: 'btn btn-success' %></td>
+      <% end %>
+
     </td>
 
 </div>
