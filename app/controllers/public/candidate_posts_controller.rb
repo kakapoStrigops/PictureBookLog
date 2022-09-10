@@ -16,7 +16,7 @@ class Public::CandidatePostsController < ApplicationController
   private
 
   def candidate_post_params
-    params.require(:candidate_post).permit(:member_id, :isbn_code, :consideration_status, :memo)
+    params.require(:candidate_post).permit(:member_id, :consideration_status, :memo, :title, :author, :publisher, :date_of_publication, :isbn_code, :book_image_url, :rakuten_books_url)
   end
 
 end
