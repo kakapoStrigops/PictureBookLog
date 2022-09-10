@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     root "homes#top"
     get "/about"=>"homes#about"
     resources :members, only: [:show, :edit, :update, :index]
+    get "books/search" => "books#search"
     resources :books, only: [:new, :index]
-    resources :candidate_posts, only: [:index, :update]
+    resources :candidate_posts, only: [:index, :update, :create]
   end
 
 
