@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2022_09_08_132238) do
 
   create_table "candidate_posts", force: :cascade do |t|
     t.integer "member_id", null: false
-    t.integer "book_id", null: false
+    t.string "isbn_code", null: false
     t.integer "recipient_id"
     t.integer "consideration_status", default: 0, null: false
     t.string "memo"
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2022_09_08_132238) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "member_id", null: false
-    t.integer "book_id", null: false
+    t.string "isbn_code", null: false
     t.integer "recipient_id"
     t.integer "recipient_age"
     t.text "review", null: false
