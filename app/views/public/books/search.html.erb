@@ -6,21 +6,32 @@
   <% end %>
 </div>
 
-<% @books.each do |book| %>
-  <div class="book-data">
-    <%= link_to (image_tag(book.medium_image_url)), book.item_url %>
-    <%= book.title %>
-    作者：<%= book.author %>
-    出版社：<%= book.publisher_name %>
-    出版日：<%= book.sales_date %>
-    ISBNコード:<%= book.isbn%>
-    <%= book.item_caption%>
+<table>
+  <thead>
+    <th colspan="2">絵本</th>
+    <th>検討リストへの登録</th>
+  </thead>
 
-    <%= form_with model: @candidate_post, url: candidate_posts_path do |f| %>
-      <%= f.hidden_field :member_id, value: current_member.id %>
-      <%= f.hidden_field :isbn_code, value: book.isbn %>
-      <%= f.submit '登録する' %>
+  <tbody>
+    <% @books.each do |book| %>
+    <tr>
+      <td><%= link_to (image_tag(book.medium_image_url)), book.item_url %></td>
+      <td>
+        <%= book.title %><br>
+        作者：<%= book.author %>
+        出版社：<%= book.publisher_name %>
+        出版日：<%= book.sales_date %><br>
+        ISBNコード:<%= book.isbn%><br>
+        <%= book.item_caption%>
+      </td>
+      <td>
+        <%= form_with model: @candidate_post, url: candidate_posts_path do |f| %>
+          <%= f.hidden_field :member_id, value: current_member.id %>
+          <%= f.hidden_field :isbn_code, value: book.isbn %>
+          <%= f.submit '登録する' %>
+        <% end %>
+      </td>
+    </tr>
     <% end %>
-
-  </div>
-<% end %>
+  </tbody>
+</table>
