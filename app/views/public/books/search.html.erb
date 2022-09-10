@@ -3,14 +3,11 @@
 <div class=class="container">
 
 
-
-<div class=".search-box">
   <%= form_with url: books_search_path , method: :get, local: true do |f| %>
-      <%= f.text_field :keyword, class: "form-control" %>
-      <%= f.submit '本の題名を検索', class: "form-control btn btn-success" %>
+      <%= f.select :parameter,  [["タイトル","title"],["作者","author"],["出版社","publisherName"],["ISBNコード","isbn"]] %>
+      <%= f.text_field :keyword %>
+      <%= f.submit '検索', class: "form-control btn btn-success" %>
   <% end %>
-</div>
-
 
   <div class="row">
 
