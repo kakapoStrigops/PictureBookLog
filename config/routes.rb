@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :members, only: [:show, :edit, :update, :index]
     get "books/search" => "books#search"
     resources :candidate_posts, only: [:create, :index, :update]
+    resources :reviews, only: [:new, :create, :index, :show, :edit, :update]
+    resources :comments, only: [:new, :create, :edit, :update]
   end
 
 
@@ -22,6 +24,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => "homes#top"
+    resources :members, only: [:index, :show, :edit, :update]
+    resources :reviews, only: [:index, :show, :edit, :update]
+    resources :tags, only: [:index]
+    resources :genre_tags, only: [:new, :create, :edit, :update]
+    resources :target_age_tags, only: [:new, :create, :edit, :update]
   end
 
 end
