@@ -1,11 +1,20 @@
 class Public::ReviewsController < ApplicationController
-  def new
-  end
 
   def create
     @review = Review.new(review_params)
     @review.save
-    redirect_to edit_review_path(@review.id)
+    # redirect_to edit_review_path(@review.id)
+    redirect_to review_path(@review.id)
+  end
+
+  def new
+    @review = Review.find(params[:id])
+  end
+
+  def post
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    redirect_to reviews_path
   end
 
   def edit
