@@ -13,10 +13,10 @@ Rails.application.routes.draw do
     get "books/search" => "books#search"
     resources :candidate_posts, only: [:create, :index, :update]
     # resources :reviews, only: [:new, :create, :index, :show, :edit, :update]
-    resources :reviews, only: [:create, :index, :show, :edit, :update] do
+    resources :reviews, only: [:create, :index, :show, :edit, :update, :destroy] do
       member do
-        get 'new'
-        patch 'post'
+        get 'new', as: 'new'
+        patch 'post', as: 'post'
       end
     end
     resources :comments, only: [:new, :create, :edit, :update]

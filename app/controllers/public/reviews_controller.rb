@@ -17,6 +17,18 @@ class Public::ReviewsController < ApplicationController
     redirect_to reviews_path
   end
 
+  def index
+    @reviews = Review.all
+  end
+
+  def show
+    @review = Review.find(params[:id])
+  end
+
+  def show
+    @review = Review.find(params[:id])
+  end
+
   def edit
     @review = Review.find(params[:id])
   end
@@ -27,14 +39,11 @@ class Public::ReviewsController < ApplicationController
     redirect_to reviews_path
   end
 
-  def index
-    @reviews = Review.all
-  end
-
-  def show
+  def destroy
     @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to reviews_path
   end
-
 
   private
 
