@@ -9,6 +9,9 @@
     <%= link_to "マイ検討リスト", candidate_posts_path %>
   </li>
   <li>
+    <%= link_to "みんなのレビュー", reviews_path %>
+  </li>
+  <li>
     <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
   </li>
 <% else %>
