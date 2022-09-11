@@ -3,6 +3,16 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
+    @review = Review.new(review_params)
+    @review.save
+    redirect_to edit_review_path(@review.id)
+  end
+
+  def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
   end
 
   def index
@@ -11,9 +21,11 @@ class Public::ReviewsController < ApplicationController
   def show
   end
 
-  def edit
+
+  private
+
+  def review_params
+    params.require(:review).permit(:member_id, :review, :hidden_status, :title, :author, :publisher, :date_of_publication, :isbn_code, :book_image_url, :rakuten_books_url)
   end
 
-  def update
-  end
 end
