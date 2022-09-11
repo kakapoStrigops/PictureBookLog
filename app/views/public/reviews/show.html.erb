@@ -11,8 +11,14 @@
     </td>
 
 <div>
-レビュー
-<%= @review.review %>
+レビュー<br>
+<%= @review.review %><br>
+
+<!--投稿者本人だけに編集リンクを表示-->
+<% if @review.member_id == current_member.id %>
+  <%= link_to "レビューを編集する", edit_review_path(@review.id) %>
+<% end %>
+
 </div>
 
 <div>
@@ -22,3 +28,6 @@
 <div>
 同じ本への他のレビュー（ISBNで検索して表示できれば）
 </div>
+
+
+<%= link_to "レビュー一覧に戻る", reviews_path %>
