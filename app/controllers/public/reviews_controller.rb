@@ -13,12 +13,17 @@ class Public::ReviewsController < ApplicationController
   end
 
   def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    redirect_to reviews_path
   end
 
   def index
+    @reviews = Review.all
   end
 
   def show
+    @review = Review.find(params[:id])
   end
 
 
