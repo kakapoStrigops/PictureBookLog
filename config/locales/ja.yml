@@ -1,0 +1,8 @@
+  ja:
+    enums:
+      candidate_post:
+        consideration_status:
+          consideration: "購入検討中"
+          decision: "購入決定"
+          pending: "購入見送り（保留）"
+          purchased: "購入済み"

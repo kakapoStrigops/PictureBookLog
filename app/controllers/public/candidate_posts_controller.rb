@@ -11,7 +11,16 @@ class Public::CandidatePostsController < ApplicationController
     @review = Review.new
   end
 
+  def edit
+  end
+
   def update
+    @candidate_post = CandidatePost.find(params[:id])
+    if @candidate_post.update(candidate_post_params)
+     redirect_to candidate_posts_path
+    else
+     render :index
+    end
   end
 
   private
