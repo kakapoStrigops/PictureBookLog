@@ -13,16 +13,25 @@ class Public::ReviewsController < ApplicationController
 
   def post
     @review = Review.find(params[:id])
-    @review.update(review_params)
-    redirect_to reviews_path
+    genre_tag = params[:review][:genre_tag]
+
+    if @review.update(review_params)
+      @review.save_genre_tag(genre_tag)
+      redirect_to reviews_path
+    else
+      redirect_back(fallback_location: new_review_path)
+    end
   end
+
+
+  # def post
+  #   @review = Review.find(params[:id])
+  #   @review.update(review_params)
+  #   redirect_to reviews_path
+  # end
 
   def index
     @reviews = Review.all
-  end
-
-  def show
-    @review = Review.find(params[:id])
   end
 
   def show
