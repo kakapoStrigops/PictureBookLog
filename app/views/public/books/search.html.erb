@@ -43,7 +43,7 @@
             <% end %>
           </td>
           <td>
-            <%= form_with model: @review, url: reviews_path do |f| %>
+            <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
               <%= f.hidden_field :member_id, value: current_member.id %>
               <%= f.hidden_field :title, value: book.title %>
               <%= f.hidden_field :author, value: book.author %>

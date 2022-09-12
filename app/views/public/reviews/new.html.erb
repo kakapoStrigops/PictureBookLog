@@ -12,7 +12,7 @@
 
 <div>
 レビュー
-<%= form_with model: @review, url: post_review_path do |f| %>
+<%= form_with model: @review, url: post_review_path(@review.id), method: :patch do |f| %>
     <%= f.text_area :review, autocomplete: "review" %>
     <%= f.submit "保存" %>
 <% end %>

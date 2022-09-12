@@ -4,7 +4,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.save
     # redirect_to edit_review_path(@review.id)
-    redirect_to review_path(@review.id)
+    redirect_to new_review_path(@review.id)
   end
 
   def new
