@@ -3,6 +3,7 @@ class Public::BooksController < ApplicationController
   def search
     @books = []
     @candidate_post = CandidatePost.new
+    @review = Review.new
     @parameter = params[:parameter]
     if @parameter == "title"
       params[:keyword]

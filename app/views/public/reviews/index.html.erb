@@ -1,2 +1,19 @@
-<h1>Public::Reviews#index</h1>
-<p>Find me in app/views/public/reviews/index.html.erb</p>
+みんなのレビュー一覧
+
+<% @reviews.each do |review| %>
+<div>
+
+    <td><%= link_to (image_tag(review.book_image_url)), review.rakuten_books_url %></td>
+    <td>
+      <%= review.title %><br>
+      作者：<%= review.author %>
+      出版社：<%= review.publisher %>
+      出版日：<%= review.date_of_publication %><br>
+      ISBNコード：<%= review.isbn_code %><br>
+      レビュー：<%= review.review %><br>
+      投稿者：<%= Member.find(review.member_id).nickname %><br>
+      <%= link_to "詳細を見る", review_path(review.id) %>
+    </td>
+
+</div>
+<% end %>
