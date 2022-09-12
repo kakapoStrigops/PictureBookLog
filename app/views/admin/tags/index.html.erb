@@ -1,2 +1,52 @@
-<h1>Admin::Tags#index</h1>
-<p>Find me in app/views/admin/tags/index.html.erb</p>
+タグ一覧
+
+<div>■ジャンルタグ</div>
+<%= link_to "追加", new_admin_genre_tag_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ジャンル</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @genre_tags.each do |genre_tag| %>
+   <tr>
+    <td><%= genre_tag.genre %></td>
+    <td>
+      <%= link_to edit_admin_genre_tag_path(genre_tag.id) do %>
+       <div class="btn btn-sm btn-success">編集する</div>
+      <% end %>
+    </td>
+   </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+
+<div>■対象年齢タグ</div>
+<%= link_to "追加", new_admin_target_age_tag_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>対象年齢</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @target_age_tags.each do |target_age_tag| %>
+   <tr>
+    <td><%= target_age_tag.target_age %></td>
+    <td>
+      <%= link_to edit_admin_target_age_tag_path(target_age_tag.id) do %>
+       <div class="btn btn-sm btn-success">編集する</div>
+      <% end %>
+    </td>
+   </tr>
+  <% end %>
+  </tbody>
+</table>
+

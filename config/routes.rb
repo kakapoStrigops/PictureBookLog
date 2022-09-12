@@ -11,8 +11,14 @@ Rails.application.routes.draw do
     get "/about"=>"homes#about"
     resources :members, only: [:show, :edit, :update, :index]
     get "books/search" => "books#search"
-    resources :candidate_posts, only: [:create, :index, :edit, :update]
-    resources :reviews, only: [:new, :create, :index, :show, :edit, :update]
+    resources :candidate_posts, only: [:create, :index, :update]
+    # resources :reviews, only: [:new, :create, :index, :show, :edit, :update]
+    resources :reviews, only: [:create, :index, :show, :edit, :update, :destroy] do
+      member do
+        get 'new', as: 'new'
+        patch 'post', as: 'post'
+      end
+    end
     resources :comments, only: [:new, :create, :edit, :update]
   end
 

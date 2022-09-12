@@ -8,6 +8,7 @@ class Public::CandidatePostsController < ApplicationController
 
   def index
     @candidate_posts = CandidatePost.where(member_id: current_member.id)
+    @review = Review.new
   end
 
   def edit
