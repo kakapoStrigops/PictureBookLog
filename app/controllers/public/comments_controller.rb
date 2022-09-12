@@ -1,6 +1,4 @@
 class Public::CommentsController < ApplicationController
-  def new
-  end
 
   def create
     review = Review.find(params[:review_id])
@@ -8,12 +6,6 @@ class Public::CommentsController < ApplicationController
     comment.review_id = review.id
     comment.save
     redirect_to review_path(review.id)
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   def destroy

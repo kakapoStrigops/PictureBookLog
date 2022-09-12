@@ -18,7 +18,7 @@ Rails.application.routes.draw do
         get 'new', as: 'new'
         patch 'post', as: 'post'
       end
-      resources :comments, only: [:new, :create, :edit, :update, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
   end
 
