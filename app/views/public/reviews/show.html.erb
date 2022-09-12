@@ -22,7 +22,21 @@
 </div>
 
 <div>
-コメント表示
+  <p>コメント件数：<%= @review.comments.count %></p>
+  <% @review.comments.each do |comment| %>
+
+    <%= comment.member.nickname %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <% if comment.member == current_member %>
+      <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@review, @comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
 </div>
 
 <div>
