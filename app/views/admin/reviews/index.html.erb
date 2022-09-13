@@ -1,2 +1,24 @@
-<h1>Admin::Reviews#index</h1>
-<p>Find me in app/views/admin/reviews/index.html.erb</p>
+レビュー一覧
+
+<table>
+  <tr>
+    <th>No.</th>
+    <th>レビュー/投稿者</th>
+    <th>投稿日時</th>
+    <th>公開ステータス</th>
+  </tr>
+
+  <% @reviews.each do |review| %>
+  <tr>
+    <td><%= review.id %></td>
+    <td>
+      <%= review.review %><br>
+      投稿者：<%= Member.find(review.member_id).nickname %>
+    </td>
+    <td><%= review.created_at %></td>
+    <td><%= review.hidden_status %></td>
+  </tr>
+  <% end %>
+
+
+</table>
