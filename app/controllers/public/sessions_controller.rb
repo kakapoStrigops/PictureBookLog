@@ -32,8 +32,8 @@ class Public::SessionsController < Devise::SessionsController
     @member = Member.find_by(email: params[:member][:email])
     ## アカウントを取得できなかった場合、このメソッドを終了する
     return if !@member
-    ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-    if @member.valid_password?(params[:member][:password]) && @member.delete_status
+    ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるか、かつ、有効会員かを判別
+    if @member.valid_password?(params[:member][:password]) && !@member.delete_status
         redirect_to new_member_session_path
     end
   end
