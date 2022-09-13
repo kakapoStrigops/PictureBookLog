@@ -10,3 +10,7 @@
         hidden_status:
           open: "公開"
           hidden: "非公開"
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M:%S"
+        short: "%m/%d %H:%M"
