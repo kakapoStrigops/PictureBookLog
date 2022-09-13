@@ -5,7 +5,8 @@ class Admin::CommentsController < ApplicationController
   end
 
   def show
-    @comment = Comment.find(params[:comment_id])
+    # @comment = Comment.find_by(id: params[:id], review_id: params[:review_id])
+    @comment = Comment.find(params[:id])
   end
 
   def edit
@@ -13,7 +14,15 @@ class Admin::CommentsController < ApplicationController
   end
 
   def update
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
+    redirect_to admin_review_path(@comment.review_id)
+  end
 
+  private
+
+  def comment_params
+    params.require(:comment).permit(:hidden_status)
   end
 
 end

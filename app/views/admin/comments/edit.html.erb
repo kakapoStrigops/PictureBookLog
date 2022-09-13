@@ -1,0 +1,21 @@
+コメントの公開設定を変更する
+<br>
+公開ステータス：
+<br>
+<%= form_with model: @comment, url: admin_review_comment_path(@comment.review_id, @comment.id) do |f| %>
+  <%= f.radio_button :hidden_status, "open" %>
+    <%= f.label :hidden_status, "公開" %>
+  <%= f.radio_button :hidden_status, "hidden" %>
+    <%= f.label :hidden_status, "非公開" %>
+  <%= f.submit "公開ステータスを変更する", class: 'btn btn-success' %>
+<% end %>
+
+該当のコメント：
+<br>
+<%= @comment.comment %>
+
+
+<br>
+■コメント対象のレビュー
+<br>
+
