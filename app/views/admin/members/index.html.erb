@@ -20,11 +20,7 @@
     </td>
     <td><%= member.email %></td>
     <td>
-      <% if member.delete_status? %>
-        退会
-      <% else %>
-        有効
-      <% end %>
+      <%= member.delete_status_i18n %>
     </td>
   </tr>
   <% end %>
