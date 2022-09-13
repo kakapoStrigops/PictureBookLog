@@ -72,9 +72,9 @@
           <tr>
             <th>会員ステータス</th>
             <td>
-              <%= f.radio_button :delete_status, false %>
+              <%= f.radio_button :delete_status, "active" %>
                 <%= f.label :delete_status, "有効" %>
-              <%= f.radio_button :delete_status, true %>
+              <%= f.radio_button :delete_status, "withdrawal" %>
                 <%= f.label :delete_status, "退会" %>
             </td>
           </tr>

@@ -1,5 +1,9 @@
   ja:
     enums:
+      member:
+        delete_status:
+          active: "有効"
+          withdrawal: "退会"
       candidate_post:
         consideration_status:
           consideration: "購入検討中"
