@@ -1,5 +1,7 @@
 class Review < ApplicationRecord
 
+  enum hidden_status: { open: false, hidden: true }
+
   belongs_to :member
   has_many :comments, dependent: :destroy
   has_many :review_genre_tags, dependent: :destroy

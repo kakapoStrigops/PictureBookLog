@@ -6,3 +6,11 @@
           decision: "購入決定"
           pending: "購入見送り（保留）"
           purchased: "購入済み"
+      review:
+        hidden_status:
+          open: "公開"
+          hidden: "非公開"
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M:%S"
+        short: "%m/%d %H:%M"
