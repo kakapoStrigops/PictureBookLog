@@ -31,7 +31,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => "homes#top"
     resources :members, only: [:index, :show, :edit, :update]
-    resources :reviews, only: [:index, :show, :edit, :update]
+    resources :reviews, only: [:index, :show, :edit, :update] do
+      resources :comments, only: [:index, :show, :edit, :update]
+    end
     resources :tags, only: [:index]
     resources :genre_tags, only: [:new, :create, :edit, :update]
     resources :target_age_tags, only: [:new, :create, :edit, :update]
