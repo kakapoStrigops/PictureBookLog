@@ -11,12 +11,19 @@
     </td>
 
 <div>
-レビュー
+レビュー<br>
 <%= form_with model: @review, url: post_review_path(@review.id), method: :patch do |f| %>
-    <%= f.text_area :review, autocomplete: "review" %>
+    レビュー<br>
+    <%= f.text_area :review, autocomplete: "review" %><br>
+    タグ<br>
+    <%= f.label :genre_tag, 'ジャンルタグ' %><br>
+    <%= collection_check_boxes(:review, :genre_tag_ids, GenreTag.all, :id, :label) do |t| %><br>
+      <% t.label { t.check_box + t.text } %>
     <%= f.submit "保存" %>
 <% end %>
 </div>
+
+
 
 
 <%= link_to "レビュー投稿を止める", review_path(@review.id), method: :delete %>

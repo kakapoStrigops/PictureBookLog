@@ -9,14 +9,15 @@ class Public::ReviewsController < ApplicationController
 
   def new
     @review = Review.find(params[:id])
+    @genre_tags = GenreTag.all
   end
 
   def post
     @review = Review.find(params[:id])
-    genre_tag = params[:review][:genre_tag]
+    # genre_tag = params[:review][:genre_tag]
 
     if @review.update(review_params)
-      @review.save_genre_tag(genre_tag)
+      @review.save_genre_tag(params[:review][:genre_tag])
       redirect_to reviews_path
     else
       redirect_back(fallback_location: new_review_path)

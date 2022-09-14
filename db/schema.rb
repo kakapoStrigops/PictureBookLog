@@ -114,10 +114,12 @@ ActiveRecord::Schema.define(version: 2022_09_08_132238) do
   end
 
   create_table "review_genre_tags", force: :cascade do |t|
-    t.integer "review_id", null: false
-    t.integer "genre_tag_id", null: false
+    t.integer "review_id"
+    t.integer "genre_tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_tag_id"], name: "index_review_genre_tags_on_genre_tag_id"
+    t.index ["review_id"], name: "index_review_genre_tags_on_review_id"
   end
 
   create_table "review_target_age_tags", force: :cascade do |t|
@@ -152,4 +154,6 @@ ActiveRecord::Schema.define(version: 2022_09_08_132238) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "review_genre_tags", "genre_tags"
+  add_foreign_key "review_genre_tags", "reviews"
 end

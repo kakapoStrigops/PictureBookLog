@@ -2,8 +2,8 @@ class CreateReviewGenreTags < ActiveRecord::Migration[6.1]
   def change
     create_table :review_genre_tags do |t|
 
-      t.integer :review_id, null: false
-      t.integer :genre_tag_id, null: false
+      t.references :review, foreign_key: true
+      t.references :genre_tag, foreign_key: true
 
       t.timestamps
     end

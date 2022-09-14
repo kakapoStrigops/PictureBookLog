@@ -7,18 +7,20 @@ class Review < ApplicationRecord
   has_many :review_target_age_tags, dependent: :destroy
   has_many :target_age_tags, through: :review_target_age_tags
 
-  def save_genre_tag(sent_genre_tags)
+  def save_genre_tag(genre_tags)
     current_genre_tags = self.genre_tags unless self.genre_tags.nil?
-    old_genre_tags = current_genre_tags - sent_genre_tags
-    new_genre_tags = sent_genre_tags - current_genre_tags
+    old_genre_tags = current_genre_tags - genre_tags
+    new_genre_tags = genre_tags - current_genre_tags
+
+    p current_genre_tags
 
     old_genre_tags.each do |old|
-      self.genre_tags.delete GenreTag.find_by(tag_name: old)
+      self.genre_tags.delete GenreTag.find(old)
     end
 
     new_genre_tags.each do |new|
-      new_post_tag = PostTag.find_or_create_by(tag_name: new)
-      self.post_tags << new_post_tag
+      new_post_tag = PostTag.find_or_create_by(id: new.id)
+      self.genre_tags << new_post_tag
     end
   end
 
