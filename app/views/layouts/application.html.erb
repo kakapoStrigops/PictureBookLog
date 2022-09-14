@@ -2,16 +2,15 @@
 <html>
   <head>
     <title>PictureBookLog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style = "background-color: #FFFFEE;">
-    <header>
+  <body style="background-color: #FFFFEE;",  class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
       <% if admin_signed_in? %>
         <%= render 'admin/header' %>
       <% else %>
@@ -19,5 +18,8 @@
       <% end %>
     </header>
     <%= yield %>
+    <footer>
+
+    </footer>
   </body>
 </html>
