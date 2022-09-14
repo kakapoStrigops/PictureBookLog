@@ -18,7 +18,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
+    @reviews = Review.where(hidden_status: false)
+    @hidden_reviews = Review.where(hidden_status: true, member_id: current_member.id)
   end
 
   def show

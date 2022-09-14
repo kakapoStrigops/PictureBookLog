@@ -1,8 +1,8 @@
 みんなのレビュー一覧
 
+<table>
 <% @reviews.each do |review| %>
-<div>
-
+  <tr>
     <td><%= link_to (image_tag(review.book_image_url)), review.rakuten_books_url %></td>
     <td>
       <%= review.title %><br>
@@ -10,10 +10,14 @@
       出版社：<%= review.publisher %>
       出版日：<%= review.date_of_publication %><br>
       ISBNコード：<%= review.isbn_code %><br>
+    </td>
+    <td>
       レビュー：<%= review.review %><br>
       投稿者：<%= Member.find(review.member_id).nickname %><br>
       <%= link_to "詳細を見る", review_path(review.id) %>
     </td>
 
-</div>
+  </tr>
 <% end %>
+</table>
+
