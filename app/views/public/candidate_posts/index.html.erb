@@ -1,8 +1,8 @@
 マイ検討リスト
 
-<% @candidate_posts.each do |candidate_post| %>
-<div>
-
+<table>
+  <% @candidate_posts.each do |candidate_post| %>
+  <tr>
     <td><%= link_to (image_tag(candidate_post.book_image_url)), candidate_post.rakuten_books_url %></td>
     <td>
       <%= candidate_post.title %><br>
@@ -12,15 +12,14 @@
       ISBNコード：<%= candidate_post.isbn_code %><br>
       ステータス：<%= candidate_post.consideration_status_i18n %>
       メモ：<%= candidate_post.memo %>
-
+    </td>
+    <td>
       <%= form_with model: candidate_post, url: candidate_post_path(candidate_post.id), local: true do |f| %>
             <td><%= f.select :consideration_status, CandidatePost.consideration_statuses.keys.map {|k| [I18n.t("enums.candidate_post.consideration_status.#{k}"), k]} %></td>
             <td><%= f.text_area :memo %></td>
             <td><%= f.submit "更新", class: 'btn btn-success' %></td>
       <% end %>
-
     </td>
-
     <td>
       <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
         <%= f.hidden_field :member_id, value: current_member.id %>
@@ -34,8 +33,6 @@
         <%= f.submit 'レビューする' %>
       <% end %>
     </td>
-
-
-
-</div>
-<% end %>
+  </tr>
+  <% end %>
+</table>
