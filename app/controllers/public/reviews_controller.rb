@@ -24,11 +24,8 @@ class Public::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-  end
-
-  def show
-    @review = Review.find(params[:id])
     @comment = Comment.new
+    # @other_reviews = Review.where(isbn_code: @review.isbn_code) - @review
   end
 
   def edit
