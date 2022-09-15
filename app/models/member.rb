@@ -19,4 +19,13 @@ class Member < ApplicationRecord
   validates :email, presence: true
   validates :self_introduction, length: {maximum: 200}
 
+  # ゲストログイン機能用（public/sessionsコントローラで使用）
+  def self.guest
+    find_or_create_by!(name: 'guestmember' ,email: 'guest@example.com') do |member|
+      member.password = SecureRandom.urlsafe_base64
+      member.name = "guestmember"
+      member.nickname = "ゲスト会員"
+    end
+  end
+
 end
