@@ -18,7 +18,8 @@
     タグ<br>
     <%= f.label :genre_tag, 'ジャンルタグ' %><br>
     <%= collection_check_boxes(:review, :genre_tag_ids, GenreTag.all, :id, :label) do |t| %><br>
-      <% t.label { t.check_box + t.text } %>
+      <%= t.label { t.check_box + t.text } %>
+    <% end %>
     <%= f.submit "保存" %>
 <% end %>
 </div>
