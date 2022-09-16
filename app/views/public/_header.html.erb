@@ -1,3 +1,4 @@
+
 <div class="container text-center">
 
   <%= link_to root_path do %>
@@ -37,6 +38,9 @@
         <li class="nav-item">
           <%= link_to "ログイン", new_member_session_path, class: 'nav-link text-dark' %>
         </li>
+        <li class="nav-item">
+          <%= link_to "ゲストログイン（閲覧用）", members_guest_sign_in_path, method: :post %>
+        </li>        
       <% end %>
       </ul>
     </div>
