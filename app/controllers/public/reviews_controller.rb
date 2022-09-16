@@ -18,16 +18,14 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
-  end
-
-  def show
-    @review = Review.find(params[:id])
+    @reviews = Review.where(hidden_status: false)
+    @hidden_reviews = Review.where(hidden_status: true, member_id: current_member.id)
   end
 
   def show
     @review = Review.find(params[:id])
     @comment = Comment.new
+    # @other_reviews = Review.where(isbn_code: @review.isbn_code) - @review
   end
 
   def edit
