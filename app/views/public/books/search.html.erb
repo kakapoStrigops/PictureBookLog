@@ -30,8 +30,8 @@
             作者：<%= book.author %><br>
             出版社：<%= book.publisher_name %>
             出版日：<%= book.sales_date %><br>
-            ISBNコード：<%= book.isbn%><br>
-            内容：<%= book.item_caption%>
+            ISBNコード：<%= book.isbn %><br>
+            内容：<%= book.item_caption %>
           </td>
           <td>
             <%= form_with model: @candidate_post, url: candidate_posts_path do |f| %>
