@@ -8,9 +8,9 @@
         </div>
         <div class="card-body">
         <%= form_with model: @member, url: member_session_path do |f| %>
-          <%= f.label :email, "メールアドレス", class: "form-label" %><br />
+          <%= f.label :email, "メールアドレス", class: "form-label" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mb-4" %>
-          <%= f.label :password, "パスワード", class: "form-label" %><br />
+          <%= f.label :password, "パスワード", class: "form-label" %>
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control mb-4" %>
           <%= f.submit "ログイン", class: "btn btn-success" %>
         <% end %>
