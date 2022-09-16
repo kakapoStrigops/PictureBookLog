@@ -9,7 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="background-color: #FFFFEE;",  class="d-flex flex-column vh-100">
+  <body style="background-color: #FFFFEE;", class="d-flex flex-column vh-100">
     <header class="shadow-sm">
       <% if admin_signed_in? %>
         <%= render 'admin/header' %>
@@ -17,8 +17,10 @@
         <%= render 'public/header' %>
       <% end %>
     </header>
+    <main>
     <%= yield %>
-    <footer>
+    </main>
+    <footer style="background-color: #EEEEEE;" class="text-center">
       <%= render 'layouts/footer' %>
     </footer>
   </body>
