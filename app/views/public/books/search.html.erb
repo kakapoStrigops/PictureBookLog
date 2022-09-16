@@ -2,15 +2,27 @@
 
   <div class="row d-flex flex-column justify-content-center my-5">
     <div>
-    <h3><strong>絵本を探す</strong></h3>
+      <h3><strong>絵本を探す</strong></h3>
     </div>
-
-    <%= form_with url: books_search_path , method: :get, local: true do |f| %>
-        <%= f.select :parameter,  [["タイトル","title"],["作者","author"],["出版社","publisherName"],["ISBNコード","isbn"]] %>
-        <%= f.text_field :keyword %>
-        <%= f.submit '検索', class: "btn btn-success btn-sm" %>
-    <% end %>
   </div>
+
+  <%= form_with url: books_search_path , method: :get, local: true do |f| %>
+  <div class="row mb-5">
+
+    <div class="col-2">
+      <%= f.select :parameter,  [["タイトル","title"],["作者","author"],["出版社","publisherName"],["ISBNコード","isbn"]], class: "form-select form-select-lg" %>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :keyword, class: "form-control" %>
+    </div>
+    <div class="col-1">
+      <%= f.submit '検索', class: "btn btn-success" %>
+    </div>
+    <div class="col"></div>
+
+  </div>
+  <% end %>
+
 
   <% @books.each do |book| %>
   <div class="card mt-4 shadow">
