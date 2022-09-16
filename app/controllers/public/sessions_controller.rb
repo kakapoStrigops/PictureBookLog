@@ -5,6 +5,13 @@ class Public::SessionsController < Devise::SessionsController
 
   before_action :member_state, only: [:create]
 
+  # ゲストログイン機能
+  def guest_sign_in
+    member = Member.guest
+    sign_in member
+    redirect_to member_path(member), notice: 'ゲスト会員でログインしました。'
+  end
+
   # GET /resource/sign_in
   # def new
   #   super
