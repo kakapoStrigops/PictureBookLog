@@ -1,0 +1,137 @@
+<div class="container mb-5">
+  <div class="row d-flex flex-column justify-content-center my-5">
+    <div>
+      <h3><strong>レビュー詳細</strong></h3>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+
+            <div class="col-2">
+            <%= link_to member_path(@review.member_id) do %>
+              <% if Member.find(@review.member_id).profile_image.attached? %>
+                <%= image_tag Member.find(@review.member_id).profile_image, size: "100x100" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "100x100" %>
+              <% end %>
+              <br>
+              <%= Member.find(@review.member_id).nickname %>
+            <% end %>
+            </div>
+
+            <div class="col-10">
+              <div class="card-body">
+                <p class="card-text"><%= @review.review %></p>
+              </div>
+              <div class="card-footer bg-transparent">
+                （<%= l @review.updated_at %>）
+                <!--投稿者本人だけに編集リンクを表示-->
+                <% if @review.member_id == current_member.id %>
+                  <%= link_to "レビューを編集する", edit_review_path(@review.id) %>
+                <% end %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <h5 class="mt-4">■コメント（<%= @review.comments.count %>件）</h5>
+      <div class="card">
+        <ul class="list-group list-group-flush">
+
+          <% @review.comments.each do |comment| %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-10">
+                  <div class="card-text"><%= comment.comment %></div>
+
+              <%= comment.created_at.strftime('%Y/%m/%d') %>
+
+              <% if comment.member == current_member %>
+                <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %>
+              <% end %>
+              </div>
+              <div class="col-2">
+              <% if comment.member.profile_image.attached? %>
+                <%= image_tag comment.member.profile_image, size: "60x60" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "60x60" %>
+              <% end %>
+              <br>
+              <%= comment.member.nickname %>
+              </div>
+            </div>
+          </li>
+          <% end %>
+          <li class="list-group-item">
+            <div class="card-title"> + コメントを投稿する</div>
+            <%= form_with model: [@review, @comment] do |f| %>
+              <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control mb-1" %>
+              <%= f.submit "投稿", class: "btn btn-success" %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <%= link_to (image_tag(@review.book_image_url)), @review.rakuten_books_url %>
+          </div>
+          <h5 class="card-title"><strong><%= @review.title %></strong></h5>
+          <table>
+            <tr>
+              <td>作者</td>
+              <td>：<%= @review.author %></td>
+            </tr>
+            <tr>
+              <td>出版社</td>
+              <td>：<%= @review.publisher %></td>
+            </tr>
+            <tr>
+              <td>出版日</td>
+              <td>：<%= @review.date_of_publication %></td>
+            </tr>
+            <tr>
+              <td>ISBN</td>
+              <td>：<%= @review.isbn_code %></td>
+            </tr>
+            <tr>
+              <td>内容</td>
+              <td>：
+              <!-- @book.item_caption -->
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div>
+      同じ本への他のレビュー（ISBNで検索して表示できれば）
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+<%= link_to "レビュー一覧に戻る", reviews_path, class: "btn btn-outline-success" %>
+
+
+
+
+</div>

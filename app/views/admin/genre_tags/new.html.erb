@@ -1,0 +1,13 @@
+ジャンルタグ追加
+
+<table>
+  <td>ジャンル名</td>
+
+  <td>
+<%= form_with model: @genre_tag, url: admin_genre_tags_path do |f| %>
+  <%= f.text_field :genre, placeholder: "ジャンル名" %>
+  <%= f.submit "新規登録" %>
+<% end %>
+  </td>
+
+</table>

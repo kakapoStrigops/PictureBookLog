@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+
+<h2><%= @member.name %>さんの会員詳細</h2>
+
+<table style="border:none;">
+  <tr>
+    <th>プロフィール画像</th>
+    <td>
+      <% if @member.profile_image.attached? %>
+        <%= image_tag @member.profile_image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>会員ID</th>
+    <td><%= @member.id %></td>
+  </tr>
+  <tr>
+    <th>名前</th>
+    <td><%= @member.name %></td>
+  </tr>
+  <tr>
+    <th>フリガナ</th>
+    <td><%= @member.name_kana %></td>
+  </tr>
+  <tr>
+    <th>ニックネーム</th>
+    <td><%= @member.nickname %></td>
+  </tr>
+  <tr>
+    <th>生まれ年</th>
+    <td><%= @member.year_of_birth %></td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @member.email %></td>
+  </tr>
+  <tr>
+    <th>自己紹介</th>
+    <td><%= @member.self_introduction %></td>
+  </tr>
+  <tr>
+    <th>会員ステータス</th>
+    <td>
+      <%= @member.delete_status_i18n %>
+    </td>
+  </tr>
+</table>
+
+<div class="mx-auto d-block">
+  <%= link_to  edit_admin_member_path(@member.id) do %>
+    <div class="btn btn-success">編集する</div>
+  <% end %>
+</div>

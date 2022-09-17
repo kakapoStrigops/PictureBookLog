@@ -1,0 +1,19 @@
+絵本
+    <td><%= link_to (image_tag(@review.book_image_url)), @review.rakuten_books_url %></td>
+    <td>
+      <%= @review.title %><br>
+      作者：<%= @review.author %>
+      出版社：<%= @review.publisher %>
+      出版日：<%= @review.date_of_publication %><br>
+      ISBNコード：<%= @review.isbn_code %><br>
+    </td>
+
+<div>
+レビュー編集
+<%= form_with model: @review do |f| %>
+    <%= f.text_area :review, autocomplete: "review" %>
+    <%= f.submit "更新" %>
+<% end %>
+</div>
+
+<%= link_to "削除する", review_path(@review.id), method: :delete %>

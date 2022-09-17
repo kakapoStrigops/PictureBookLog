@@ -1,0 +1,65 @@
+レビュー詳細
+
+絵本
+    <td><%= link_to (image_tag(@review.book_image_url)), @review.rakuten_books_url %></td>
+    <td>
+      <%= @review.title %><br>
+      作者：<%= @review.author %>
+      出版社：<%= @review.publisher %>
+      出版日：<%= @review.date_of_publication %><br>
+      ISBNコード：<%= @review.isbn_code %><br>
+    </td>
+
+<div>
+レビュー<br>
+<%= @review.review %><br>
+
+投稿者：
+<%= link_to admin_member_path(@review.member_id) do %>
+  <%= Member.find(@review.member_id).nickname %>
+<% end %>
+<br>
+公開ステータス：
+      <%= link_to edit_admin_review_path(@review.id) do %>
+        <%= @review.hidden_status_i18n %>
+      <% end %>
+
+</div>
+
+<div>
+  <p>コメント件数：<%= @review.comments.count %></p>
+<table>
+  <tr>
+    <th>No.</th>
+    <th>コメント</th>
+    <th>投稿者</th>
+    <th>投稿日時</th>
+    <th>公開ステータス</th>
+    <th>詳細・編集リンク</th>
+  </tr>
+  <% @review.comments.each do |comment| %>
+  <tr>
+    <td><%= comment.id %></td>
+    <td><%= comment.comment %></td>
+    <td>
+      <%= link_to admin_member_path(comment.member_id) do %>
+        <%= Member.find(comment.member_id).nickname %>
+      <% end %>
+    </td>
+    <td><%= l comment.created_at %></td>
+    <td><%= comment.hidden_status_i18n %></td>
+    <td>
+      <%= link_to "詳細確認", admin_review_comment_path(comment.review.id, comment.id) %><br>
+      <%= link_to "ステータス管理", edit_admin_review_comment_path(comment.review.id, comment.id) %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+
+</div>
+
+<div>
+同じ本への他のレビュー（ISBNで検索して表示できれば）
+</div>
+
