@@ -118,6 +118,8 @@ ActiveRecord::Schema.define(version: 2022_09_08_132238) do
     t.integer "genre_tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_tag_id"], name: "index_review_genre_tags_on_genre_tag_id"
+    t.index ["review_id"], name: "index_review_genre_tags_on_review_id"
   end
 
   create_table "review_target_age_tags", force: :cascade do |t|
