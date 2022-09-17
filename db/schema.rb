@@ -127,6 +127,8 @@ ActiveRecord::Schema.define(version: 2022_09_08_132238) do
     t.integer "target_age_tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_review_target_age_tags_on_review_id"
+    t.index ["target_age_tag_id"], name: "index_review_target_age_tags_on_target_age_tag_id"
   end
 
   create_table "reviews", force: :cascade do |t|
