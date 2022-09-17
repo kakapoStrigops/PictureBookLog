@@ -87,7 +87,6 @@ GEM
       responders
       warden (~> 1.2.3)
     digest (3.1.0)
-
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
