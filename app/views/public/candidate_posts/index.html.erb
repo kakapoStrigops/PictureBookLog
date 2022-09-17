@@ -11,21 +11,21 @@
     <% @candidate_posts.each do |candidate_post| %>
       <li class="list-group-item">
 
-      <td><%= link_to (image_tag(candidate_post.book_image_url)), candidate_post.rakuten_books_url %></td>
+      <%= link_to (image_tag(candidate_post.book_image_url)), candidate_post.rakuten_books_url %>
 
-        <%= candidate_post.title %><br>
+        <%= candidate_post.title %>
         作者：<%= candidate_post.author %>
         出版社：<%= candidate_post.publisher %>
-        出版日：<%= candidate_post.date_of_publication %><br>
-        ISBNコード：<%= candidate_post.isbn_code %><br>
+        出版日：<%= candidate_post.date_of_publication %>
+        ISBNコード：<%= candidate_post.isbn_code %>
         ステータス：<%= candidate_post.consideration_status_i18n %>
         メモ：<%= candidate_post.memo %>
 
 
         <%= form_with model: candidate_post, url: candidate_post_path(candidate_post.id), local: true do |f| %>
-              <td><%= f.select :consideration_status, CandidatePost.consideration_statuses.keys.map {|k| [I18n.t("enums.candidate_post.consideration_status.#{k}"), k]} %></td>
-              <td><%= f.text_area :memo %></td>
-              <td><%= f.submit "更新", class: 'btn btn-success' %></td>
+          <%= f.select :consideration_status, CandidatePost.consideration_statuses.keys.map {|k| [I18n.t("enums.candidate_post.consideration_status.#{k}"), k]} %>
+          <%= f.text_area :memo %>
+          <%= f.submit "更新", class: 'btn btn-success' %>
         <% end %>
 
 
@@ -38,7 +38,7 @@
           <%= f.hidden_field :isbn_code, value: candidate_post.isbn_code %>
           <%= f.hidden_field :book_image_url, value: candidate_post.book_image_url %>
           <%= f.hidden_field :rakuten_books_url, value: candidate_post.rakuten_books_url %>
-          <%= f.submit 'レビューする' %>
+          <%= f.submit 'レビュー投稿する', class: 'btn btn-success' %>
         <% end %>
 
       </li>

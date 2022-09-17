@@ -12,6 +12,7 @@
           <div class="row">
 
             <div class="col-2">
+            <%= link_to member_path(@review.member_id) do %>
               <% if Member.find(@review.member_id).profile_image.attached? %>
                 <%= image_tag Member.find(@review.member_id).profile_image, size: "100x100" %>
               <% else %>
@@ -19,6 +20,7 @@
               <% end %>
               <br>
               <%= Member.find(@review.member_id).nickname %>
+            <% end %>
             </div>
 
             <div class="col-10">
@@ -48,9 +50,6 @@
             <div class="row">
               <div class="col-10">
                   <div class="card-text"><%= comment.comment %></div>
-
-
-
 
               <%= comment.created_at.strftime('%Y/%m/%d') %>
 

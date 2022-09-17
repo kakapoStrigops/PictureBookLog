@@ -26,9 +26,17 @@
             <p class="card-text"><%= review.review %></p>
           </div>
           <div class="card-footer bg-transparent">
-            投稿者：<%= Member.find(review.member_id).nickname %>
-            （<%= l review.updated_at %>）
-            <%= link_to "詳細を見る", review_path(review.id) %>
+            <div class="row">
+              <div class="col-6">
+              投稿者　：<%= Member.find(review.member_id).nickname %><br>
+              投稿日時：<%= l review.updated_at %><br>
+              コメント：<%= Comment.where(review_id: review.id).count %>件
+              </div>
+              <div class="col"></div>
+              <div class="col-2">
+              <%= link_to "詳細", review_path(review.id), class: "btn btn-outline-success" %>
+              </div>
+            </div>
           </div>
         </div>
 
