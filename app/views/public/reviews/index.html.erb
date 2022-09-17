@@ -1,23 +1,48 @@
-みんなのレビュー一覧
+<div class="container mb-5">
+  <div class="row d-flex flex-column justify-content-center my-5">
+    <div>
+      <h3><strong>みんなのレビュー</strong></h3>
+    </div>
+  </div>
 
-<table>
-<% @reviews.each do |review| %>
-  <tr>
-    <td><%= link_to (image_tag(review.book_image_url)), review.rakuten_books_url %></td>
-    <td>
-      <%= review.title %><br>
-      作者：<%= review.author %>
-      出版社：<%= review.publisher %>
-      出版日：<%= review.date_of_publication %><br>
-      ISBNコード：<%= review.isbn_code %><br>
-    </td>
-    <td>
-      レビュー：<%= review.review %><br>
-      投稿者：<%= Member.find(review.member_id).nickname %><br>
-      <%= link_to "詳細を見る", review_path(review.id) %>
-    </td>
+  <% @reviews.each do |review| %>
+  <div class="card mt-4 shadow">
+    <div class="card-body">
+      <div class="row">
 
-  </tr>
-<% end %>
-</table>
+        <div class="col-4">
+          <div class="card-body">
+            <div class="card-title">
+            <%= link_to (image_tag(review.book_image_url)), review.rakuten_books_url %>
+            </div>
+            <h5 class="card-title"><strong><%= review.title %></strong></h5>
+            <h6 class="card-subtitle"><%= review.author %></h6>
+          </div>
+        </div>
 
+        <div class="col-8">
+          <div class="card-body">
+            <h4 class="card-title">レビュー</h4>
+            <p class="card-text"><%= review.review %></p>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="row">
+              <div class="col-6">
+              投稿者　：<%= Member.find(review.member_id).nickname %><br>
+              投稿日時：<%= l review.updated_at %><br>
+              コメント：<%= Comment.where(review_id: review.id).count %>件
+              </div>
+              <div class="col"></div>
+              <div class="col-2">
+              <%= link_to "詳細", review_path(review.id), class: "btn btn-outline-success" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+</div>

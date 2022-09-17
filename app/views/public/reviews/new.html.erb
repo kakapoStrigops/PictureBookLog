@@ -1,4 +1,11 @@
-レビュー投稿
+<div class="container mb-5">
+  <div class="row d-flex flex-column justify-content-center my-5">
+    <div>
+      <h3><strong>レビュー投稿</strong></h3>
+    </div>
+  </div>
+
+
 
 絵本
     <td><%= link_to (image_tag(@review.book_image_url)), @review.rakuten_books_url %></td>
@@ -14,10 +21,11 @@
 レビュー
 <%= form_with model: @review, url: post_review_path(@review.id), method: :patch do |f| %>
     <%= f.text_area :review, autocomplete: "review" %>
-    <%= f.submit "保存" %>
+    <%= f.submit "投稿", class: "btn btn-success" %>
 <% end %>
 </div>
 
 
-<%= link_to "レビュー投稿を止める", review_path(@review.id), method: :delete %>
-投稿をやめるためのリンクdestroyで。
+<%= link_to "レビュー投稿をやめる", review_path(@review.id), method: :delete, class: "btn btn-secondary" %>
+
+</div>

@@ -1,6 +1,8 @@
 class Public::MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
+    @candidate_posts = CandidatePost.where(member_id: @member.id)
+    @reviews = Review.where(member_id: @member.id)
   end
 
   def edit
