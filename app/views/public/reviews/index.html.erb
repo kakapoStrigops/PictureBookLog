@@ -5,6 +5,11 @@
     </div>
   </div>
 
+<%= form_with url: reviews_path, method: :get, local: true do |f| %>
+  <%= f.select("genre_tag_id", GenreTag.pluck(:genre, :id), { include_blank: true }) %>
+  <%= f.submit '検索', name: nil %>
+<% end %>
+
   <% @reviews.each do |review| %>
   <div class="card mt-4 shadow">
     <div class="card-body">

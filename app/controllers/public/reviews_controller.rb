@@ -20,6 +20,7 @@ class Public::ReviewsController < ApplicationController
   def index
     @reviews = Review.where(hidden_status: false)
     @hidden_reviews = Review.where(hidden_status: true, member_id: current_member.id)
+    @reviews = @reviews.joins(:genre_tags).where(genre_tags: { id: params[:genre_tag_id] }) if params[:genre_tag_id].present?
   end
 
   def show
