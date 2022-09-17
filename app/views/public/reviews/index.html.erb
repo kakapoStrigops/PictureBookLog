@@ -31,6 +31,10 @@
               投稿者　：<%= Member.find(review.member_id).nickname %><br>
               投稿日時：<%= l review.updated_at %><br>
               コメント：<%= Comment.where(review_id: review.id).count %>件
+              ジャンル：
+      <% review.genre_tags.each do |genre_tag| %>
+        <%= genre_tag.genre %>
+      <% end %>
               </div>
               <div class="col"></div>
               <div class="col-2">
