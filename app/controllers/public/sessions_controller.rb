@@ -12,6 +12,10 @@ class Public::SessionsController < Devise::SessionsController
     redirect_to member_path(member), notice: 'ゲスト会員でログインしました。'
   end
 
+  def after_sign_in_path_for(resource)
+    member_path(current_member.id)
+  end
+
   # GET /resource/sign_in
   # def new
   #   super

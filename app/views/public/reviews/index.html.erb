@@ -5,16 +5,18 @@
     </div>
   </div>
 
+<h5><strong>タイトル・作者・出版社・ISBNで検索する</strong></h5>
 <%= form_with url: reviews_path, method: :get, local: true do |f| %>
   <%= f.select :parameter,  [["タイトル","title"],["作者","author"],["出版社","publisherName"],["ISBNコード","isbn"]], class: "form-select form-select-lg" %>
   <%= f.text_field :keyword, class: "form-control" %>
-  <%= f.submit '検索' %>
+  <%= f.submit '検索', class: 'btn btn-success btn-sm' %>
 <% end %>
 
+<h5><strong>タグで検索する</strong></h5>
 <%= form_with url: reviews_path, method: :get, local: true do |f| %>
   <%= f.select("genre_tag_id", GenreTag.pluck(:genre, :id), { include_blank: "指定しない" }) %>
   <%= f.select("target_age_tag_id", TargetAgeTag.pluck(:target_age, :id), { include_blank: "指定しない"}) %>
-  <%= f.submit '検索', name: nil %>
+  <%= f.submit '検索', class: 'btn btn-success btn-sm' %>
 <% end %>
 
   <% @reviews.each do |review| %>
