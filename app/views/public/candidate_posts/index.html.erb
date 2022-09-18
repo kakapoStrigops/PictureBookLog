@@ -4,7 +4,10 @@
       <h3><strong>マイ検討リスト</strong></h3>
     </div>
   </div>
-
+        <%= form_with url: candidate_posts_path, method: :get, local: true do |f| %>
+          <%= f.select :consideration_status, CandidatePost.consideration_statuses.keys.map {|k| [I18n.t("enums.candidate_post.consideration_status.#{k}"), k]} %>
+          <%= f.submit "選択", class: 'btn btn-success' %>
+        <% end %>
 
   <div class="card">
     <ul class="list-group list-group-flush">

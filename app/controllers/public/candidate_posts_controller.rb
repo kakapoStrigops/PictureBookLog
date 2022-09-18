@@ -8,6 +8,7 @@ class Public::CandidatePostsController < ApplicationController
 
   def index
     @candidate_posts = CandidatePost.where(member_id: current_member.id)
+    @candidate_posts = CandidatePost.where(member_id: current_member.id, consideration_status: params[:consideration_status]) if params[:consideration_status].present?
     @review = Review.new
   end
 
