@@ -44,7 +44,7 @@
       <% if @member == current_member %>
 
         <h5>■絵本を探す</h5>
-
+  <%= render 'public/books/search-form' %>
         <h5 class="mt-4">■検討リスト（<%= @candidate_posts.count %>件）</h5>
 
       <% end %>
