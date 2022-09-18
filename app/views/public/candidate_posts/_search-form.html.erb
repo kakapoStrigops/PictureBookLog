@@ -1,0 +1,7 @@
+<div class="row justify-content-end">
+  <h5><strong>ステータス検索</strong></h5> &emsp;
+  <%= form_with url: candidate_posts_path, method: :get, local: true do |f| %>
+    <%= f.select :consideration_status, CandidatePost.consideration_statuses.keys.map {|k| [I18n.t("enums.candidate_post.consideration_status.#{k}"), k]}, { include_blank: '選択してください'}, { class: 'form-select' , required: true } %>
+    <%= f.submit "絞り込む", class: 'btn btn-success btn-sm' %>
+  <% end %>
+</div>

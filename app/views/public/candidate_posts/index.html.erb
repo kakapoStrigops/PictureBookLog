@@ -4,10 +4,9 @@
       <h3><strong>マイ検討リスト</strong></h3>
     </div>
   </div>
-        <%= form_with url: candidate_posts_path, method: :get, local: true do |f| %>
-          <%= f.select :consideration_status, CandidatePost.consideration_statuses.keys.map {|k| [I18n.t("enums.candidate_post.consideration_status.#{k}"), k]}, { include_blank: '選択してください'}, { class: 'form-select' , required: true } %>
-          <%= f.submit "検索", class: 'btn btn-success' %>
-        <% end %>
+
+  <!--購入検討ステータスでの絞り込み検索フォーム-->
+  <%= render 'public/candidate_posts/search-form' %>
 
   <div class="card">
     <ul class="list-group list-group-flush">
