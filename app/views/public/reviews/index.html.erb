@@ -6,6 +6,13 @@
   </div>
 
 <%= form_with url: reviews_path, method: :get, local: true do |f| %>
+  <%= f.select :parameter,  [["タイトル","title"],["作者","author"],["出版社","publisherName"],["ISBNコード","isbn"]], class: "form-select form-select-lg" %>
+  <%= f.text_field :keyword, class: "form-control" %>
+  <%= f.submit '検索' %>
+<% end %>
+
+
+<%= form_with url: reviews_path, method: :get, local: true do |f| %>
   <%= f.select("genre_tag_id", GenreTag.pluck(:genre, :id), { include_blank: true }) %>
   <%= f.submit '検索', name: nil %>
 <% end %>

@@ -9,4 +9,18 @@ class Review < ApplicationRecord
   has_many :review_target_age_tags, dependent: :destroy
   has_many :target_age_tags, through: :review_target_age_tags
 
+  def self.search_for(parameter, keyword)
+    if parameter == "title"
+      Review.where("title LIKE?", "%#{keyword}%")
+    elsif parameter == "author"
+      Review.where("author LIKE?", "%#{keyword}%")
+    elsif parameter == "publisherName"
+      Review.where("publisher LIKE?", "%#{keyword}%")
+    elsif parameter == "isbn"
+      Review.where(isbn_code: keyword, hidden_status: false)
+    else
+      Review.where(hidden_status: false)
+    end
+  end
+
 end
