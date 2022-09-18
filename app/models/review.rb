@@ -11,13 +11,13 @@ class Review < ApplicationRecord
 
   def self.search_for(parameter, keyword)
     if parameter == "title"
-      Review.where("title LIKE?", "%#{keyword}%")
+      Review.where(hidden_status: false).where("title LIKE?", "%#{keyword}%")
     elsif parameter == "author"
-      Review.where("author LIKE?", "%#{keyword}%")
+      Review.where(hidden_status: false).where("author LIKE?", "%#{keyword}%")
     elsif parameter == "publisherName"
-      Review.where("publisher LIKE?", "%#{keyword}%")
+      Review.where(hidden_status: false).where("publisher LIKE?", "%#{keyword}%")
     elsif parameter == "isbn"
-      Review.where(isbn_code: keyword, hidden_status: false)
+      Review.where(hidden_status: false).where(isbn_code: keyword)
     else
       Review.where(hidden_status: false)
     end
