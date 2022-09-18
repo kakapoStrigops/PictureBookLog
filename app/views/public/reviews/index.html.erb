@@ -11,9 +11,9 @@
   <%= f.submit '検索' %>
 <% end %>
 
-
 <%= form_with url: reviews_path, method: :get, local: true do |f| %>
   <%= f.select("genre_tag_id", GenreTag.pluck(:genre, :id), { include_blank: true }) %>
+  <%= f.select("target_age_tag_id", TargetAgeTag.pluck(:target_age, :id), { include_blank: true }) %>
   <%= f.submit '検索', name: nil %>
 <% end %>
 

@@ -23,7 +23,8 @@ class Public::ReviewsController < ApplicationController
     @parameter = params[:parameter]
     @keyword = params[:keyword]
     @reviews = Review.search_for(@parameter, @keyword)
-    @reviews = @reviews.joins(:genre_tags).where(hidden_status: false, genre_tags: { id: params[:genre_tag_id] }) if params[:genre_tag_id].present?
+    @reviews = @reviews.joins(:genre_tags).where(genre_tags: { id: params[:genre_tag_id] }) if params[:genre_tag_id].present?
+    @reviews = @reviews.joins(:target_age_tags).where(target_age_tags: { id: params[:target_age_tag_id] }) if params[:target_age_tag_id].present?
   end
 
   def show
