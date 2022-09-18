@@ -5,6 +5,11 @@
     </div>
   </div>
 
+<%= form_with url: reviews_path, method: :get, local: true do |f| %>
+  <%= f.select("genre_tag_id", GenreTag.pluck(:genre, :id), { include_blank: true }) %>
+  <%= f.submit '検索', name: nil %>
+<% end %>
+
   <% @reviews.each do |review| %>
   <div class="card mt-4 shadow">
     <div class="card-body">
@@ -31,6 +36,16 @@
               投稿者　：<%= Member.find(review.member_id).nickname %><br>
               投稿日時：<%= l review.updated_at %><br>
               コメント：<%= Comment.where(review_id: review.id).count %>件
+              ジャンル：
+                <% review.genre_tags.each do |genre_tag| %>
+                  <%= genre_tag.genre %>
+                <% end %>
+              <br>
+              対象年齢：
+                <% review.target_age_tags.each do |target_age_tag| %>
+                  <%= target_age_tag.target_age %>
+                <% end %>
+
               </div>
               <div class="col"></div>
               <div class="col-2">

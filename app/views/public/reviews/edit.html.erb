@@ -10,8 +10,10 @@
 
 <div>
 レビュー編集
-<%= form_with model: @review do |f| %>
+<%= form_with(model: @review, local: true) do |f| %>
     <%= f.text_area :review, autocomplete: "review" %>
+    <%= f.collection_check_boxes(:genre_tag_ids, GenreTag.all, :id, :genre) %>
+    <%= f.collection_check_boxes(:target_age_tag_ids, TargetAgeTag.all, :id, :target_age) %>
     <%= f.submit "更新" %>
 <% end %>
 </div>

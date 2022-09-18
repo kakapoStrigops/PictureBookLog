@@ -20,6 +20,7 @@ class Public::ReviewsController < ApplicationController
   def index
     @reviews = Review.where(hidden_status: false)
     @hidden_reviews = Review.where(hidden_status: true, member_id: current_member.id)
+    @reviews = @reviews.joins(:genre_tags).where(genre_tags: { id: params[:genre_tag_id] }) if params[:genre_tag_id].present?
   end
 
   def show
@@ -49,7 +50,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:member_id, :review, :hidden_status, :title, :author, :publisher, :date_of_publication, :isbn_code, :book_image_url, :rakuten_books_url)
+    params.require(:review).permit(:member_id, :review, :hidden_status, :title, :author, :publisher, :date_of_publication, :isbn_code, :book_image_url, :rakuten_books_url, { genre_tag_ids: [] }, { target_age_tag_ids: [] })
   end
 
 end

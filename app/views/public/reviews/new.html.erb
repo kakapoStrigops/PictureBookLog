@@ -21,6 +21,8 @@
 レビュー
 <%= form_with model: @review, url: post_review_path(@review.id), method: :patch do |f| %>
     <%= f.text_area :review, autocomplete: "review" %>
+    <%= f.collection_check_boxes(:genre_tag_ids, GenreTag.all, :id, :genre) %>
+    <%= f.collection_check_boxes(:target_age_tag_ids, TargetAgeTag.all, :id, :target_age) %>
     <%= f.submit "投稿", class: "btn btn-success" %>
 <% end %>
 </div>
