@@ -40,8 +40,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :show, :edit, :update]
     end
     resources :tags, only: [:index]
-    resources :genre_tags, only: [:new, :create, :edit, :update]
-    resources :target_age_tags, only: [:new, :create, :edit, :update]
+    resources :genre_tags, only: [:new, :create, :edit, :update, :destroy]
+    resources :target_age_tags, only: [:new, :create, :edit, :update, :destroy]
   end
 
 end

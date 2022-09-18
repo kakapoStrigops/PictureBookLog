@@ -1,7 +1,4 @@
 class Admin::GenreTagsController < ApplicationController
-  def new
-    @genre_tag = GenreTag.new
-  end
 
   def create
     @genre_tag = GenreTag.new(genre_tag_params)
@@ -20,6 +17,12 @@ class Admin::GenreTagsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @genre_tag = GenreTag.find(params[:id])
+    @genre_tag.destroy
+    redirect_to admin_tags_path
   end
 
   private

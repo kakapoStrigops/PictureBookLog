@@ -1,8 +1,10 @@
 タグ一覧
 
 <div>■ジャンルタグ</div>
-<%= link_to "追加", new_admin_genre_tag_path %>
-
+<%= form_with model: @genre_tag, url: admin_genre_tags_path do |f| %>
+  <%= f.text_field :genre, placeholder: "ジャンル名" %>
+  <%= f.submit "新規登録" %>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -15,10 +17,10 @@
    <tr>
     <td><%= genre_tag.genre %></td>
     <td>
-      <%= link_to edit_admin_genre_tag_path(genre_tag.id) do %>
-       <div class="btn btn-sm btn-success">編集する</div>
-      <% end %>
+    <%= link_to "編集", edit_admin_genre_tag_path(genre_tag.id), class: "btn btn-outline-success btn-sm" %>
+    <%= link_to "削除", admin_genre_tag_path(genre_tag.id), method: :delete, class: "btn btn-outline-success btn-sm" %>
     </td>
+
    </tr>
   <% end %>
   </tbody>
@@ -27,8 +29,10 @@
 
 
 <div>■対象年齢タグ</div>
-<%= link_to "追加", new_admin_target_age_tag_path %>
-
+<%= form_with model: @target_age_tag, url: admin_target_age_tags_path do |f| %>
+  <%= f.text_field :target_age, placeholder: "対象年齢" %>
+  <%= f.submit "新規登録" %>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -41,9 +45,8 @@
    <tr>
     <td><%= target_age_tag.target_age %></td>
     <td>
-      <%= link_to edit_admin_target_age_tag_path(target_age_tag.id) do %>
-       <div class="btn btn-sm btn-success">編集する</div>
-      <% end %>
+      <%= link_to "編集", edit_admin_target_age_tag_path(target_age_tag.id), class: "btn btn-outline-success btn-sm" %>
+      <%= link_to "削除", admin_target_age_tag_path(target_age_tag.id), method: :delete, class: "btn btn-outline-success btn-sm" %>
     </td>
    </tr>
   <% end %>
