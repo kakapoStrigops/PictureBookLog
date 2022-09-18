@@ -18,8 +18,6 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    # @reviews = Review.where(hidden_status: false)
-    # @hidden_reviews = Review.where(hidden_status: true, member_id: current_member.id)
     @parameter = params[:parameter]
     @keyword = params[:keyword]
     @reviews = Review.search_for(@parameter, @keyword)
