@@ -22,12 +22,12 @@
             投稿者　：<%= Member.find(review.member_id).nickname %><br>
             投稿日時：<%= l review.updated_at %><br>
             コメント：<%= Comment.where(review_id: review.id).count %>件
+            <br>
             ジャンル：
               <% review.genre_tags.each do |genre_tag| %>
                 <%= genre_tag.genre %>
               <% end %>
-            <br>
-            対象年齢：
+            、対象年齢：
               <% review.target_age_tags.each do |target_age_tag| %>
                 <%= target_age_tag.target_age %>
               <% end %>
