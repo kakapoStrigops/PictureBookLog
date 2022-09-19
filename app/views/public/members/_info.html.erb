@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-body">
+    <div class="text-center mb-2">
+      <% if member.profile_image.attached? %>
+        <%= image_tag member.profile_image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+      <% end %>
+    </div>
+    <h6>
+      <strong>
+        <%= member.nickname %>
+      （<%= Date.today.strftime("%Y%m%d").to_i/10000 - member.year_of_birth.to_i %>歳）
+      </strong>
+    </h6>
+    <div>
+      自己紹介<br>
+      <%= member.self_introduction %>
+    </div>
+    <div>
+      <% if member == current_member %>
+        <%= link_to "編集", edit_member_path(current_member.id), class: "btn btn-secondary btn-sm" %>
+      <% end %>
+    </div>
+  </div>
+</div>
