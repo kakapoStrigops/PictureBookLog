@@ -41,19 +41,10 @@
 
 
     <div class="col-9">
-      <% if @member == current_member %>
-        <h5>■絵本を探す</h5>
-        <%= render 'public/books/search-form' %>
-        <h5 class="mt-4">■検討リスト（購入検討<%=  @consideration_count %>件中<%= @candidate_posts.count %>件を表示）</h5>
-        <%= render 'public/candidate_posts/index', candidate_posts: @candidate_posts %>
-        <h6>
-          <%= link_to "全ての検討ステータスを確認する", candidate_posts_path, class: "btn btn-outline-secondary btn-sm mt-2" %>
-        </h6>
+      <!--本人の時のみ表示する本の検索フォーム及び検討リスト-->
+      <%= render 'public/members/upper-part', member: @member,consideration_count: @consideration_count,candidate_posts: @candidate_posts %>
 
-
-      <% end %>
-
-      <h5 class="mt-4">■レビュー（<%= @reviews.count %>件）</h5>
+      <h5>■レビュー（<%= @reviews.count %>件）</h5>
       <div class="card">
         <ul class="list-group list-group-flush">
           <% @reviews.each do |review| %>
