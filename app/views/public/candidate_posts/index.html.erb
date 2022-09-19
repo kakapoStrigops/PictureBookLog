@@ -8,31 +8,7 @@
   <!--購入検討ステータスでの絞り込み検索フォーム-->
   <%= render 'public/candidate_posts/search-form' %>
 
-  <div class="card">
-    <ul class="list-group list-group-flush">
-    <% @candidate_posts.each do |candidate_post| %>
-      <li class="list-group-item">
-        <div class="row">
-          <div class="col-3">
-            <!--購入検討ステータスとメモ書きの表示・編集フォーム-->
-            <%= render 'public/candidate_posts/status-form', candidate_post: candidate_post %>
-          </div>
-          <div class="col-2">
-            <%= link_to (image_tag(candidate_post.book_image_url)), candidate_post.rakuten_books_url %>
-          </div>
-          <div class="col-7">
-            <h6><strong><%= candidate_post.title %></strong></h6>
-            <h6>作者：<%= candidate_post.author %></h6>
-            出版社：<%= candidate_post.publisher %>、
-            ISBN：<%= candidate_post.isbn_code %>、
-            出版日：<%= candidate_post.date_of_publication %>
-            <!--レビュー投稿・詳細ボタン-->
-            <%= render 'public/candidate_posts/reviewing', review: @review, candidate_post: candidate_post %>
-          </div>
-        </div>
-      </li>
-    <% end %>
-    </ul>
-  </div>
+  <!--購入検討リスト-->
+  <%= render 'public/candidate_posts/index', candidate_posts: @candidate_posts %>
 
 </div>
