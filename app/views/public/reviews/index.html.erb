@@ -4,69 +4,8 @@
       <h3><strong>みんなのレビュー</strong></h3>
     </div>
   </div>
-
-<h5><strong>タイトル・作者・出版社・ISBNで検索する</strong></h5>
-<%= form_with url: reviews_path, method: :get, local: true do |f| %>
-  <%= f.select :parameter,  [["タイトル","title"],["作者","author"],["出版社","publisherName"],["ISBNコード","isbn"]], class: "form-select form-select-lg" %>
-  <%= f.text_field :keyword, class: "form-control" %>
-  <%= f.submit '検索', class: 'btn btn-success btn-sm' %>
-<% end %>
-
-<h5><strong>タグで検索する</strong></h5>
-<%= form_with url: reviews_path, method: :get, local: true do |f| %>
-  <%= f.select("genre_tag_id", GenreTag.pluck(:genre, :id), { include_blank: "指定しない" }) %>
-  <%= f.select("target_age_tag_id", TargetAgeTag.pluck(:target_age, :id), { include_blank: "指定しない"}) %>
-  <%= f.submit '検索', class: 'btn btn-success btn-sm' %>
-<% end %>
-
-  <% @reviews.each do |review| %>
-  <div class="card mt-4 shadow">
-    <div class="card-body">
-      <div class="row">
-
-        <div class="col-4">
-          <div class="card-body">
-            <div class="card-title">
-            <%= link_to (image_tag(review.book_image_url)), review.rakuten_books_url %>
-            </div>
-            <h5 class="card-title"><strong><%= review.title %></strong></h5>
-            <h6 class="card-subtitle"><%= review.author %></h6>
-          </div>
-        </div>
-
-        <div class="col-8">
-          <div class="card-body">
-            <h4 class="card-title">レビュー</h4>
-            <p class="card-text"><%= review.review %></p>
-          </div>
-          <div class="card-footer bg-transparent">
-            <div class="row">
-              <div class="col-6">
-              投稿者　：<%= Member.find(review.member_id).nickname %><br>
-              投稿日時：<%= l review.updated_at %><br>
-              コメント：<%= Comment.where(review_id: review.id).count %>件
-              ジャンル：
-                <% review.genre_tags.each do |genre_tag| %>
-                  <%= genre_tag.genre %>
-                <% end %>
-              <br>
-              対象年齢：
-                <% review.target_age_tags.each do |target_age_tag| %>
-                  <%= target_age_tag.target_age %>
-                <% end %>
-
-              </div>
-              <div class="col"></div>
-              <div class="col-2">
-              <%= link_to "詳細", review_path(review.id), class: "btn btn-outline-success" %>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <% end %>
-
+  <!--レビューを絵本情報やタグで検索するフォーム-->
+  <%= render 'public/reviews/search-form' %>
+  <!--レビューを一覧表示-->
+  <%= render 'public/reviews/index', reviews: @reviews %>
 </div>
