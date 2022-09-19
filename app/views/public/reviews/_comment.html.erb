@@ -1,0 +1,33 @@
+<div class="card">
+  <ul class="list-group list-group-flush">
+    <% review.comments.each do |comment| %>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-10">
+          <div class="card-text"><%= comment.comment %></div>
+          <%= comment.created_at.strftime('%Y/%m/%d') %>
+          <% if comment.member == current_member %>
+            <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, class: "btn btn-outline-secondary btn-sm" %>
+          <% end %>
+        </div>
+        <div class="col-2">
+          <% if comment.member.profile_image.attached? %>
+            <%= image_tag comment.member.profile_image, size: "60x60" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "60x60" %>
+          <% end %>
+          <br>
+          <%= comment.member.nickname %>
+        </div>
+      </div>
+    </li>
+    <% end %>
+    <li class="list-group-item">
+      <div class="card-title"> + コメントを投稿する</div>
+      <%= form_with model: [review, @comment] do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control mb-1" %>
+        <%= f.submit "投稿", class: "btn btn-success" %>
+      <% end %>
+    </li>
+  </ul>
+</div>

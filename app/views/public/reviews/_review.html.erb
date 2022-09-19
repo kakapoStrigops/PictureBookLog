@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-2">
+      <%= link_to member_path(review.member_id) do %>
+        <% if Member.find(review.member_id).profile_image.attached? %>
+          <%= image_tag Member.find(review.member_id).profile_image, size: "100x100" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
+        <% end %>
+        <br>
+        <%= Member.find(review.member_id).nickname %>
+      <% end %>
+      </div>
+      <div class="col-10">
+        <div class="card-body">
+          <p class="card-text"><%= review.review %></p>
+        </div>
+        <div class="card-footer bg-transparent">
+          （<%= l review.updated_at %>）
+          <!--投稿者本人だけに編集リンクを表示-->
+          <% if review.member_id == current_member.id %>
+            <%= link_to "レビューを編集する", edit_review_path(review.id), class: "btn btn-outline-secondary btn-sm" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
