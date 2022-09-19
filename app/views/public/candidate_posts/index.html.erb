@@ -12,37 +12,39 @@
     <ul class="list-group list-group-flush">
     <% @candidate_posts.each do |candidate_post| %>
       <li class="list-group-item">
+        <div class="row">
+          <div class="col-3">
+            <%= form_with model: candidate_post, url: candidate_post_path(candidate_post.id), local: true do |f| %>
+              <%= f.select :consideration_status, CandidatePost.consideration_statuses.keys.map {|k| [I18n.t("enums.candidate_post.consideration_status.#{k}"), k]}, class: "form-select form-select-lg" %>
+              <%= f.text_area :memo, placeholder: "メモ", class: "form-control mb-1" %>
+              <%= f.submit "更新", class: 'btn btn-success btn-sm' %>
+            <% end %>
+          </div>
 
-      <%= link_to (image_tag(candidate_post.book_image_url)), candidate_post.rakuten_books_url %>
+          <div class="col-2">
+            <%= link_to (image_tag(candidate_post.book_image_url)), candidate_post.rakuten_books_url %>
+          </div>
 
-        <%= candidate_post.title %>
-        作者：<%= candidate_post.author %>
-        出版社：<%= candidate_post.publisher %>
-        出版日：<%= candidate_post.date_of_publication %>
-        ISBNコード：<%= candidate_post.isbn_code %>
-        ステータス：<%= candidate_post.consideration_status_i18n %>
-        メモ：<%= candidate_post.memo %>
+          <div class="col-7">
+            <h6><strong><%= candidate_post.title %></strong></h6>
+            <h6>作者：<%= candidate_post.author %></h6>
+            出版社：<%= candidate_post.publisher %>、
+            ISBN：<%= candidate_post.isbn_code %>、
+            出版日：<%= candidate_post.date_of_publication %>
 
-
-        <%= form_with model: candidate_post, url: candidate_post_path(candidate_post.id), local: true do |f| %>
-          <%= f.select :consideration_status, CandidatePost.consideration_statuses.keys.map {|k| [I18n.t("enums.candidate_post.consideration_status.#{k}"), k]} %>
-          <%= f.text_area :memo %>
-          <%= f.submit "更新", class: 'btn btn-success' %>
-        <% end %>
-
-
-        <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
-          <%= f.hidden_field :member_id, value: current_member.id %>
-          <%= f.hidden_field :title, value: candidate_post.title %>
-          <%= f.hidden_field :author, value: candidate_post.author %>
-          <%= f.hidden_field :publisher, value: candidate_post.publisher %>
-          <%= f.hidden_field :date_of_publication, value: candidate_post.date_of_publication %>
-          <%= f.hidden_field :isbn_code, value: candidate_post.isbn_code %>
-          <%= f.hidden_field :book_image_url, value: candidate_post.book_image_url %>
-          <%= f.hidden_field :rakuten_books_url, value: candidate_post.rakuten_books_url %>
-          <%= f.submit 'レビュー投稿する', class: 'btn btn-success' %>
-        <% end %>
-
+            <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
+              <%= f.hidden_field :member_id, value: current_member.id %>
+              <%= f.hidden_field :title, value: candidate_post.title %>
+              <%= f.hidden_field :author, value: candidate_post.author %>
+              <%= f.hidden_field :publisher, value: candidate_post.publisher %>
+              <%= f.hidden_field :date_of_publication, value: candidate_post.date_of_publication %>
+              <%= f.hidden_field :isbn_code, value: candidate_post.isbn_code %>
+              <%= f.hidden_field :book_image_url, value: candidate_post.book_image_url %>
+              <%= f.hidden_field :rakuten_books_url, value: candidate_post.rakuten_books_url %>
+              <%= f.submit 'レビュー投稿する', class: 'btn btn-success btn-sm mt-2' %>
+            <% end %>
+          </div>
+        </div>
       </li>
     <% end %>
     </ul>
