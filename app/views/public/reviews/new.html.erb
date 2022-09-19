@@ -6,28 +6,39 @@
   </div>
 
 
+  <div class="card mt-4 shadow mb-3">
+    <div class="card-body">
 
-絵本
-    <td><%= link_to (image_tag(@review.book_image_url)), @review.rakuten_books_url %></td>
-    <td>
-      <%= @review.title %><br>
-      作者：<%= @review.author %>
-      出版社：<%= @review.publisher %>
-      出版日：<%= @review.date_of_publication %><br>
-      ISBNコード：<%= @review.isbn_code %><br>
-    </td>
+      <div class="card-header bg-transparent">
+        <div class="row">
+          <div class="col-2">
+            <%= link_to (image_tag(@review.book_image_url)), @review.rakuten_books_url %>
+          </div>
+          <div class="col-10">
+            <h5><strong><%= @review.title %></strong></h5>
+            <h6>作者：<%= @review.author %></h6>
+            <h6>出版社：<%= @review.publisher %></h6>
+            <h6>出版日：<%= @review.date_of_publication %></h6>
+            <h6>ISBN：<%= @review.isbn_code %></h6>
+          </div>
+        </div>
+      </div>
 
-<div>
-レビュー
-<%= form_with model: @review, url: post_review_path(@review.id), method: :patch do |f| %>
-    <%= f.text_area :review, autocomplete: "review" %>
-    <%= f.collection_check_boxes(:genre_tag_ids, GenreTag.all, :id, :genre) %>
-    <%= f.collection_check_boxes(:target_age_tag_ids, TargetAgeTag.all, :id, :target_age) %>
-    <%= f.submit "投稿", class: "btn btn-success" %>
-<% end %>
-</div>
+      <div class="card-body">
+        <h4><strong>レビュー</strong></h4>
+        <%= form_with model: @review, url: post_review_path(@review.id), method: :patch do |f| %>
+          <%= f.text_area :review, rows: '5', autofocus: true, placeholder: "レビューをここに", class: "form-control mb-3" %>
+          <h6><strong>ジャンルタグ</strong></h6>
+          <%= f.collection_check_boxes(:genre_tag_ids, GenreTag.all, :id, :genre) %>
+          <h6><strong>対象年齢タグ</strong></h6>
+          <%= f.collection_check_boxes(:target_age_tag_ids, TargetAgeTag.all, :id, :target_age) %>
+          <%= f.submit "投稿", class: "btn btn-success" %>
+        <% end %>
+      </div>
 
+    </div>
+  </div>
 
-<%= link_to "レビュー投稿をやめる", review_path(@review.id), method: :delete, class: "btn btn-secondary" %>
+  <%= link_to "レビュー投稿をやめる", review_path(@review.id), method: :delete, class: "btn btn-secondary" %>
 
 </div>
