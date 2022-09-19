@@ -12,10 +12,10 @@
           <%= genre_tag.genre %>
         </div>
         <div class="col-2">
-          <%= link_to "編集", edit_admin_genre_tag_path(genre_tag.id), class: "btn btn-outline-success btn-sm" %>
+          <%= link_to "編集", edit_admin_genre_tag_path(genre_tag.id), class: "btn btn-outline-success btn-sm mb-2" %>
         </div>
         <div class="col-2">
-          <%= link_to "削除", admin_genre_tag_path(genre_tag.id), method: :delete, class: "btn btn-outline-success btn-sm" %>
+          <%= link_to "削除", admin_genre_tag_path(genre_tag.id), method: :delete, class: "btn btn-outline-success btn-sm mb-2" %>
         </div>
       <% end %>
       </div>
