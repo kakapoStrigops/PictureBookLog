@@ -1,55 +1,87 @@
-タグ一覧
+<div class="container mb-5">
+  <div class="row d-flex flex-column justify-content-center my-5">
+    <div>
+      <h3><strong>タグ一覧</strong></h3>
+    </div>
+  </div>
 
-<div>■ジャンルタグ</div>
-<%= form_with model: @genre_tag, url: admin_genre_tags_path do |f| %>
-  <%= f.text_field :genre, placeholder: "ジャンル名" %>
-  <%= f.submit "新規登録" %>
-<% end %>
-<table>
-  <thead>
-    <tr>
-      <th>ジャンル</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @genre_tags.each do |genre_tag| %>
-   <tr>
-    <td><%= genre_tag.genre %></td>
-    <td>
-    <%= link_to "編集", edit_admin_genre_tag_path(genre_tag.id), class: "btn btn-outline-success btn-sm" %>
-    <%= link_to "削除", admin_genre_tag_path(genre_tag.id), method: :delete, class: "btn btn-outline-success btn-sm" %>
-    </td>
+  <div class="row mb-4">
 
-   </tr>
-  <% end %>
-  </tbody>
-</table>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-header">
+          <h5><strong>ジャンルタグ</strong></h5>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <% @genre_tags.each do |genre_tag| %>
+            <div class="col-8">
+              <%= genre_tag.genre %>
+            </div>
+            <div class="col-2">
+              <%= link_to "編集", edit_admin_genre_tag_path(genre_tag.id), class: "btn btn-outline-success btn-sm" %>
+            </div>
+            <div class="col-2">
+              <%= link_to "削除", admin_genre_tag_path(genre_tag.id), method: :delete, class: "btn btn-outline-success btn-sm" %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <%= form_with model: @genre_tag, url: admin_genre_tags_path do |f| %>
+          <div class="row">
+            <div class="col-8">
+              <%= f.text_field :genre, placeholder: "+ 追加するジャンル名", class: "form-control" %>
+            </div>
+            <div class="col-2">
+              <%= f.submit "追加", class: "btn btn-success btn-sm" %>
+            </div>
+            <div class="col-2"></div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
 
+    <div class="col-6">
+      <div class="card">
+        <div class="card-header">
+          <h5><strong>対象年齢タグ</strong></h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <% @target_age_tags.each do |target_age_tag| %>
+            <div class="col-8">
+              <%= target_age_tag.target_age %>
+            </div>
+            <div class="col-2">
+              <%= link_to "編集", edit_admin_target_age_tag_path(target_age_tag.id), class: "btn btn-outline-success btn-sm" %>
+            </div>
+            <div class="col-2">
+              <%= link_to "削除", admin_target_age_tag_path(target_age_tag.id), method: :delete, class: "btn btn-outline-success btn-sm" %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+        <div class="card-footer">
+          <%= form_with model: @target_age_tag, url: admin_target_age_tags_path do |f| %>
+          <div class="row">
+            <div class="col-8">
+              <%= f.text_field :target_age, placeholder: "+ 追加する対象年齢", class: "form-control" %>
+            </div>
+            <div class="col-2">
+              <%= f.submit "追加", class: "btn btn-success btn-sm" %>
+            </div>
+            <div class="col-2"></div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
-<div>■対象年齢タグ</div>
-<%= form_with model: @target_age_tag, url: admin_target_age_tags_path do |f| %>
-  <%= f.text_field :target_age, placeholder: "対象年齢" %>
-  <%= f.submit "新規登録" %>
-<% end %>
-<table>
-  <thead>
-    <tr>
-      <th>対象年齢</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @target_age_tags.each do |target_age_tag| %>
-   <tr>
-    <td><%= target_age_tag.target_age %></td>
-    <td>
-      <%= link_to "編集", edit_admin_target_age_tag_path(target_age_tag.id), class: "btn btn-outline-success btn-sm" %>
-      <%= link_to "削除", admin_target_age_tag_path(target_age_tag.id), method: :delete, class: "btn btn-outline-success btn-sm" %>
-    </td>
-   </tr>
-  <% end %>
-  </tbody>
-</table>
+  </div>
 
+</div>
