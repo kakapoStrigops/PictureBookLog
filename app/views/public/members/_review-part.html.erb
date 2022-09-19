@@ -1,0 +1,48 @@
+      <h5>■レビュー（<%= reviews.count %>件）</h5>
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <% reviews.each do |review| %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <div class="card-body">
+                  <div class="card-title">
+                  <%= link_to (image_tag(review.book_image_url)), review.rakuten_books_url %>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-10">
+                <div class="card-header bg-transparent">
+                  <div class="row">
+                    <div class="col-7">
+                      <h5 class="card-title"><strong><%= review.title %></strong></h5>
+                    </div>
+                    <div class="col-5 mt-2">
+                      <h6 class="card-subtitle">作者：<%= review.author %></h6>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  <p class="card-text"><%= review.review %></p>
+                  ジャンル：
+                    <% review.genre_tags.each do |genre_tag| %>
+                      <%= genre_tag.genre %>
+                    <% end %>
+                  <br>
+                  対象年齢：
+                    <% review.target_age_tags.each do |target_age_tag| %>
+                      <%= target_age_tag.target_age %>
+                    <% end %>
+                  <br>
+                  （<%= l review.updated_at %>）
+                  <%= link_to "詳細", review_path(review.id), class: "btn btn-outline-success" %>
+                </div>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </div>
