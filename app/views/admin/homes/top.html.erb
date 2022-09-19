@@ -1,2 +1,15 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container mb-5">
+  <div class="row d-flex flex-column justify-content-center my-5">
+    <div class="col-8 mx-auto">
+      <h3><strong>管理者画面です</strong></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <%= link_to "会員一覧", admin_members_path, class: 'btn btn-outline-success btn-block' %>
+      <%= link_to "レビュー一覧", admin_reviews_path, class: 'btn btn-outline-success btn-block my-3' %>
+      <%= link_to "タグ一覧", admin_tags_path, class: 'btn btn-outline-success btn-block' %>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary btn-block my-5' %>
+    </div>
+  </div>
+</div>
