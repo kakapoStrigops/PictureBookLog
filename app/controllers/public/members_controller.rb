@@ -1,7 +1,8 @@
 class Public::MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
-    @candidate_posts = CandidatePost.where(member_id: @member.id)
+    @consideration_count = CandidatePost.where(member_id: @member.id, consideration_status: 0).count
+    @candidate_posts = CandidatePost.where(member_id: @member.id, consideration_status: 0).order(updated_at: "DESC").limit(3)
     @reviews = Review.where(member_id: @member.id)
   end
 

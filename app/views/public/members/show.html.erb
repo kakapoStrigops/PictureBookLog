@@ -45,8 +45,8 @@
 
         <h5>■絵本を探す</h5>
   <%= render 'public/books/search-form' %>
-        <h5 class="mt-4">■検討リスト（<%= @candidate_posts.count %>件）</h5>
-
+        <h5 class="mt-4">■検討リスト（購入検討<%=  @consideration_count %>件中<%= @candidate_posts.count %>件を表示）</h5>
+          <%= render 'public/candidate_posts/index', candidate_posts: @candidate_posts %>
       <% end %>
 
       <h5 class="mt-4">■レビュー（<%= @reviews.count %>件）</h5>
