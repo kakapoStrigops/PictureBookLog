@@ -4,15 +4,10 @@
       <h3><strong>タグ一覧</strong></h3>
     </div>
   </div>
-
   <div class="row mb-4">
-
-  <!--ジャンルタグの一覧（編集リンク・削除機能を含む）と追加欄-->
-  <%= render 'admin/genre_tags/index', genre_tags: @genre_tags, genre_tag: @genre_tag %>
-
-  <!--対象年齢タグの一覧（編集リンク・削除機能を含む）と追加欄-->
-  <%= render 'admin/target_age_tags/index', target_age_tags: @target_age_tags, target_age_tag: @target_age_tag %>
-
+    <!--ジャンルタグの一覧（編集リンク・削除機能を含む）と追加欄-->
+    <%= render 'admin/genre_tags/index', genre_tags: @genre_tags, genre_tag: @genre_tag %>
+    <!--対象年齢タグの一覧（編集リンク・削除機能を含む）と追加欄-->
+    <%= render 'admin/target_age_tags/index', target_age_tags: @target_age_tags, target_age_tag: @target_age_tag %>
   </div>
-
 </div>

@@ -2,15 +2,6 @@ class Admin::CommentsController < ApplicationController
 
   before_action :authenticate_admin!
 
-  def index
-    @comments = Comment.all.page(params[:page]).per(20)
-  end
-
-  def show
-    # @comment = Comment.find_by(id: params[:id], review_id: params[:review_id])
-    @comment = Comment.find(params[:id])
-  end
-
   def edit
     @comment = Comment.find(params[:id])
   end

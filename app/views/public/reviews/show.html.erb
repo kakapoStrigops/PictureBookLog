@@ -9,7 +9,7 @@
     <div class="col-8">
       <!--レビュー文と投稿者-->
       <%= render 'public/reviews/review', review: @review %>
-      <h5 class="mt-4">■コメント（<%= @comments.count %>件）</h5>
+      <h5 class="mt-4">■ コメント（<%= @comments.count %>件）</h5>
       <%= render 'public/reviews/comment', review: @review, comments: @comments %>
     </div>
     <div class="col-4">
