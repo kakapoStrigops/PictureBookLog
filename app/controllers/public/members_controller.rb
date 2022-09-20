@@ -1,9 +1,10 @@
 class Public::MembersController < ApplicationController
+
   def show
     @member = Member.find(params[:id])
     @consideration_count = CandidatePost.where(member_id: @member.id, consideration_status: 0).count
     @candidate_posts = CandidatePost.where(member_id: @member.id, consideration_status: 0).order(updated_at: "DESC").limit(3)
-    @reviews = Review.where(member_id: @member.id)
+    @reviews = Review.where(member_id: @member.id).order(updated_at: "DESC")
   end
 
   def edit
@@ -17,9 +18,6 @@ class Public::MembersController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def index
   end
 
   private

@@ -3,7 +3,6 @@ class Public::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.save
-    # redirect_to edit_review_path(@review.id)
     redirect_to new_review_path(@review.id)
   end
 
@@ -20,9 +19,9 @@ class Public::ReviewsController < ApplicationController
   def index
     @parameter = params[:parameter]
     @keyword = params[:keyword]
-    @reviews = Review.search_for(@parameter, @keyword)
-    @reviews = @reviews.joins(:genre_tags).where(genre_tags: { id: params[:genre_tag_id] }) if params[:genre_tag_id].present?
-    @reviews = @reviews.joins(:target_age_tags).where(target_age_tags: { id: params[:target_age_tag_id] }) if params[:target_age_tag_id].present?
+    @reviews = Review.search_for(@parameter, @keyword).order(updated_at: "DESC")
+    @reviews = @reviews.joins(:genre_tags).where(genre_tags: { id: params[:genre_tag_id] }).order(updated_at: "DESC") if params[:genre_tag_id].present?
+    @reviews = @reviews.joins(:target_age_tags).where(target_age_tags: { id: params[:target_age_tag_id] }).order(updated_at: "DESC") if params[:target_age_tag_id].present?
   end
 
   def show
