@@ -1,5 +1,7 @@
 class Admin::GenreTagsController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def create
     @genre_tag = GenreTag.new(genre_tag_params)
     @genre_tag.save

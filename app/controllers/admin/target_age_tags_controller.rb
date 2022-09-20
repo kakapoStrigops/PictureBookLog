@@ -1,5 +1,7 @@
 class Admin::TargetAgeTagsController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def create
     @target_age_tag = TargetAgeTag.new(target_age_tag_params)
     @target_age_tag.save
