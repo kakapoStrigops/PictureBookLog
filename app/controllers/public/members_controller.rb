@@ -33,7 +33,7 @@ class Public::MembersController < ApplicationController
   def ensure_guest_member
     @member = Member.find(params[:id])
     if @member.email == "guest@example.com"
-      redirect_to member_path(current_member) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to member_path(current_member), notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 
