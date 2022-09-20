@@ -1,5 +1,7 @@
 class Public::CandidatePostsController < ApplicationController
 
+  before_action :authenticate_member!
+
   def create
     @candidate_post = CandidatePost.new(candidate_post_params)
     @candidate_post.save

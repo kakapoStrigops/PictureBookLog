@@ -1,5 +1,7 @@
 class Public::ReviewsController < ApplicationController
 
+  before_action :authenticate_member!
+
   def create
     @review = Review.new(review_params)
     @review.save

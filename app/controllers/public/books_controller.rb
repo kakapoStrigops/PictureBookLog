@@ -1,5 +1,7 @@
 class Public::BooksController < ApplicationController
 
+  before_action :authenticate_member!
+
   def search
     @books = []
     @candidate_post = CandidatePost.new

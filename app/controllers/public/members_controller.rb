@@ -1,5 +1,7 @@
 class Public::MembersController < ApplicationController
 
+  before_action :authenticate_member!
+
   def show
     @member = Member.find(params[:id])
     @consideration_count = CandidatePost.where(member_id: @member.id, consideration_status: 0).count
