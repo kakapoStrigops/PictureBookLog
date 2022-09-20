@@ -19,9 +19,8 @@
         <div class="card-footer bg-transparent">
           （<%= l review.updated_at %>）
           公開ステータス：
-          <%= link_to edit_admin_review_path(review.id) do %>
-            <%= review.hidden_status_i18n %>
-          <% end %>
+          <%= review.hidden_status_i18n %>
+          <%= link_to "ステータス変更", edit_admin_review_path(review.id), class: "btn btn-outline-secondary btn-sm" %>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
     <% review.comments.each do |comment| %>
     <li class="list-group-item">
       <div class="row">
-        <div class="col-8">
+        <div class="col-6">
           <div class="card-text"><%= comment.comment %></div>
           （<%= l comment.created_at %>）
         </div>
@@ -16,9 +16,10 @@
           <br>
           <%= comment.member.nickname %>
         </div>
-        <div class="col-2">
-          <%= comment.hidden_status_i18n %>
-          <%= link_to "ステータス管理", edit_admin_review_comment_path(comment.review.id, comment.id) %>
+        <div class="col-4">
+          公開ステータス：
+          <%= comment.hidden_status_i18n %><br>
+          <%= link_to "ステータス変更", edit_admin_review_comment_path(comment.review.id, comment.id), class: "btn btn-outline-secondary btn-sm" %>
         </div>
       </div>
     </li>
