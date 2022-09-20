@@ -26,6 +26,7 @@ class Public::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    @comments = Comment.where(review_id: @review.id, hidden_status: false)
     @comment = Comment.new
   end
 
