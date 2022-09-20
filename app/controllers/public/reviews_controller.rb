@@ -27,10 +27,7 @@ class Public::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    # @book =  RakutenWebService::Books::Book.search(isbn: @review.isbn_code)
-    # @book_content =  RakutenWebService::Books::Book.search(isbn: @review.isbn_code).item_caption
     @comment = Comment.new
-    # @other_reviews = Review.where(isbn_code: @review.isbn_code) - @review
   end
 
   def edit

@@ -1,5 +1,12 @@
 <%= form_with model: candidate_post, url: candidate_post_path(candidate_post.id), local: true do |f| %>
   <%= f.select :consideration_status, CandidatePost.consideration_statuses.keys.map {|k| [I18n.t("enums.candidate_post.consideration_status.#{k}"), k]}, class: "form-select form-select-lg" %>
   <%= f.text_area :memo, placeholder: "メモ", class: "form-control mb-1" %>
-  <%= f.submit "更新", class: 'btn btn-success btn-sm' %>
+  <ul class="list-inline">
+    <li class="list-inline-item">
+    <%= f.submit "更新", class: 'btn btn-success btn-sm' %>
+    </li>
 <% end %>
+    <li class="list-inline-item">
+      <%= link_to "削除", candidate_post_path(candidate_post.id), method: :delete, class: "btn btn-secondary btn-sm" %>
+    </li>
+  </ul>
