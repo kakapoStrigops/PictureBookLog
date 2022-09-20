@@ -9,6 +9,8 @@ class Review < ApplicationRecord
   has_many :review_target_age_tags, dependent: :destroy
   has_many :target_age_tags, through: :review_target_age_tags
 
+  validates :review, length: {maximum: 3000}
+
   def self.search_for(parameter, keyword)
     if parameter == "title"
       Review.where(hidden_status: false).where("LENGTH(review) >= ?", 1).where("title LIKE?", "%#{keyword}%")

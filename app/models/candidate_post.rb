@@ -4,4 +4,6 @@ class CandidatePost < ApplicationRecord
 
   belongs_to :member
 
+  validates :memo, length: {maximum: 100}
+
 end
