@@ -1,6 +1,7 @@
 class Public::MembersController < ApplicationController
 
   before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:edit]
 
   def show
     @member = Member.find(params[:id])
@@ -27,6 +28,13 @@ class Public::MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:name, :name_kana, :nickname, :year_of_birth, :email, :self_introduction, :profile_image)
+  end
+
+  def ensure_guest_member
+    @member = Member.find(params[:id])
+    if @member.email == "guest@example.com"
+      redirect_to member_path(current_member) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
   end
 
 end
