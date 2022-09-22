@@ -42,7 +42,7 @@
 - IDE：Cloud9
 
 ## 使用素材
-- LOGO MAKER（https://logo-maker.stores.jp/）
-- photoAC（https://www.photo-ac.com/）
-- いらすとや（https://www.irasutoya.com/）
-- 楽天ブックス系API(https://webservice.rakuten.co.jp/)
+- LOGO MAKER　https://logo-maker.stores.jp/
+- photoAC　https://www.photo-ac.com/
+- いらすとや　https://www.irasutoya.com/
+- 楽天ブックス系API　https://webservice.rakuten.co.jp/
