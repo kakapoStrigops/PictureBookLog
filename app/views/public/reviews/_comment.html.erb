@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-10">
           <div class="card-text"><%= comment.comment %></div>
-          <%= comment.created_at.strftime('%Y/%m/%d') %>
+          （<%= l comment.created_at %>）
           <% if comment.member == current_member %>
             <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, class: "btn btn-outline-secondary btn-sm" %>
           <% end %>
