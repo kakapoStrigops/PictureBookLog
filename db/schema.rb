@@ -52,18 +52,6 @@ ActiveRecord::Schema.define(version: 2022_09_08_132238) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "books", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "author", null: false
-    t.string "publisher"
-    t.string "date_of_publication"
-    t.string "isbn_code"
-    t.text "book_image_url"
-    t.text "rakuten_books_url", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "candidate_posts", force: :cascade do |t|
     t.integer "member_id", null: false
     t.integer "recipient_id"
