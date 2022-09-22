@@ -1,5 +1,7 @@
 class Public::CandidatePostsController < ApplicationController
 
+  before_action :authenticate_member!
+
   def create
     @candidate_post = CandidatePost.new(candidate_post_params)
     @candidate_post.save
@@ -7,11 +9,9 @@ class Public::CandidatePostsController < ApplicationController
   end
 
   def index
-    @candidate_posts = CandidatePost.where(member_id: current_member.id)
+    @candidate_posts = CandidatePost.where(member_id: current_member.id).order(updated_at: "DESC")
+    @candidate_posts = CandidatePost.where(member_id: current_member.id, consideration_status: params[:consideration_status]).order(updated_at: "DESC") if params[:consideration_status].present?
     @review = Review.new
-  end
-
-  def edit
   end
 
   def update
@@ -21,6 +21,12 @@ class Public::CandidatePostsController < ApplicationController
     else
      render :index
     end
+  end
+
+  def destroy
+    @candidate_post = CandidatePost.find(params[:id])
+    @candidate_post.destroy
+    redirect_to candidate_posts_path
   end
 
   private

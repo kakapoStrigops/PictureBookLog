@@ -1,9 +1,12 @@
 class Public::CommentsController < ApplicationController
 
+  before_action :authenticate_member!
+
   def create
     review = Review.find(params[:review_id])
     comment = current_member.comments.new(comment_params)
     comment.review_id = review.id
+    comment.member_id = current_member.id
     comment.save
     redirect_to review_path(review.id)
   end

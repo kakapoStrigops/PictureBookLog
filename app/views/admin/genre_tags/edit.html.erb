@@ -1,13 +1,19 @@
-ジャンルタグ編集
+<div class="container mb-5">
+  <div class="row d-flex flex-column justify-content-center my-5">
+    <div class="col-6 mx-auto">
 
-<table>
-  <td>ジャンル名</td>
+      <div class="card shadow mb-5">
+        <div class="card-header">
+          <h5><strong>ジャンルタグ編集</strong></h5>
+        </div>
+        <div class="card-body">
+          <%= form_with model: @genre_tag, url: admin_genre_tag_path do |f| %>
+            <%= f.text_field :genre, placeholder: "ジャンル名", autofocus: true, class: "form-control mb-4" %>
+            <%= f.submit "更新", class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
 
-  <td>
-<%= form_with model: @genre_tag, url: admin_genre_tag_path do |f| %>
-  <%= f.text_field :genre, placeholder: "ジャンル名" %>
-  <%= f.submit "更新" %>
-<% end %>
-  </td>
-
-</table>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,19 @@
-対象年齢タグ編集
+<div class="container mb-5">
+  <div class="row d-flex flex-column justify-content-center my-5">
+    <div class="col-6 mx-auto">
 
-<table>
-  <td>対象年齢</td>
+      <div class="card shadow mb-5">
+        <div class="card-header">
+          <h5><strong>対象年齢タグ編集</strong></h5>
+        </div>
+        <div class="card-body">
+          <%= form_with model: @target_age_tag, url: admin_target_age_tag_path do |f| %>
+            <%= f.text_field :target_age, autofocus: true, class: "form-control mb-4" %>
+            <%= f.submit "更新", class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
 
-  <td>
-<%= form_with model: @target_age_tag, url: admin_target_age_tag_path do |f| %>
-  <%= f.text_field :target_age, placeholder: "対象年齢" %>
-  <%= f.submit "更新" %>
-<% end %>
-  </td>
-
-</table>
+    </div>
+  </div>
+</div>

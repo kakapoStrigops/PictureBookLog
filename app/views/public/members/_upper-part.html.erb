@@ -1,0 +1,11 @@
+<% if member == current_member %>
+  <h5>■ 絵本を探す</h5>
+  <%= render 'public/books/search-form' %>
+  <h5 class="mt-4">
+    ■ 検討リスト（購入検討<%=  consideration_count %>件中<%= candidate_posts.count %>件を表示）
+  </h5>
+  <%= render 'public/candidate_posts/index', candidate_posts: @candidate_posts %>
+  <h6>
+    <%= link_to "全ての検討ステータスを確認する", candidate_posts_path, class: "btn btn-outline-secondary btn-sm mt-2 mb-4" %>
+  </h6>
+<% end %>

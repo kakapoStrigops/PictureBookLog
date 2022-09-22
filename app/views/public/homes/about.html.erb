@@ -1,2 +1,45 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div class="container mb-5">
+  <div class="row d-flex flex-column justify-content-center mt-5">
+    <div class="col-8 mx-auto">
+      <h3><strong>About</strong></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h5 style="line-height:2rem">
+        身近にいる子供に絵本をプレゼントしたり読み聞かせをしたりする人のための、<strong>絵本のレビューサイト</strong>です。<br>
+        （大人になって改めて絵本に夢中になっている人も利用できます。）<br>
+        主に次のことができます。
+      </h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h5 style="line-height:2rem">
+        <ul>
+          <li>
+            絵本の検索（
+            <!-- Rakuten Web Services Attribution Snippet FROM HERE -->
+            <a href="https://developers.rakuten.com/" target="_blank">Supported by Rakuten Developers</a>
+            <!-- Rakuten Web Services Attribution Snippet TO HERE -->
+            ）
+          </li>
+          <li>
+           <h5>絵本の購入検討リストの作成</h5>
+          </li>
+          <li>
+            絵本のレビュー投稿（子供のリアクションや自分の感想の共有）
+          </li>
+        </ul>
+      </h5>
+    </div>
+  </div>
+
+  <div class="row my-5">
+    <div class="col-6 mx-auto">
+      <%= link_to "ゲストログイン", members_guest_sign_in_path, method: :post, class: 'btn btn-outline-success btn-block' %>
+      <%= link_to "新規会員登録", new_member_registration_path, class: 'btn btn-outline-success btn-block my-3' %>
+      <%= link_to "ログイン", new_member_session_path, class: 'btn btn-outline-success btn-block' %>
+    </div>
+  </div>
+</div>

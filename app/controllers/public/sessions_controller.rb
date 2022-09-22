@@ -12,6 +12,10 @@ class Public::SessionsController < Devise::SessionsController
     redirect_to member_path(member), notice: 'ゲスト会員でログインしました。'
   end
 
+  def after_sign_in_path_for(resource)
+    member_path(current_member.id)
+  end
+
   # GET /resource/sign_in
   # def new
   #   super
@@ -40,7 +44,7 @@ class Public::SessionsController < Devise::SessionsController
     ## アカウントを取得できなかった場合、このメソッドを終了する
     return if !@member
     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるか、かつ、有効会員かを判別
-    if @member.valid_password?(params[:member][:password]) && !@member.delete_status
+    if @member.valid_password?(params[:member][:password]) && (@member.delete_status == "withdrawal")
         redirect_to new_member_session_path
     end
   end
