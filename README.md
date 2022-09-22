@@ -42,6 +42,7 @@
 - IDE：Cloud9
 
 ## 使用素材
-検討中。
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- ロゴ作成：LOGO MAKER（https://logo-maker.stores.jp/）
+- トップ画面用画像：photoAC（https://www.photo-ac.com/）
+- 会員プロフィール画像（No Imageおよびテストデータ）：いらすとや（https://www.irasutoya.com/）
+- 絵本検索：楽天ブックス系API(https://webservice.rakuten.co.jp/)
