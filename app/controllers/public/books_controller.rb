@@ -2,17 +2,6 @@ class Public::BooksController < ApplicationController
 
   before_action :authenticate_member!
 
-# # 検討途中
-#   def search
-#     # @books = []
-#     @candidate_post = CandidatePost.new
-#     @review = Review.new
-#     @parameter = params[:parameter]
-#     @keyword = params[:keyword]
-#     @books = RakutenWebService::Books::Book.search_for(@parameter, @keyword)
-#   end
-
-
   def search
     @books = []
     @candidate_post = CandidatePost.new
