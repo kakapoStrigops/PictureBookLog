@@ -6,4 +6,7 @@ class CandidatePost < ApplicationRecord
 
   validates :memo, length: {maximum: 100}
 
+  scope :recent, -> (count) { order(updated_at: :desc).limit(count) }
+  scope :extract, -> (member, status) { where(member_id: member.id, consideration_status: status) }
+
 end
