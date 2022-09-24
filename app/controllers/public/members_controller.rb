@@ -9,7 +9,7 @@ class Public::MembersController < ApplicationController
     @candidate_posts = CandidatePost.extract(@member, 0).recent(3)
     @review = Review.new
     @reviews = Review.where(member_id: @member.id).order(updated_at: "DESC") if current_member == @member
-    @reviews = Review.where(member_id: @member.id, hidden_status: false).where("LENGTH(review) >= ?", 1).order(updated_at: "DESC") if current_member != @member
+    @reviews = Review.where(member_id: @member.id).displayable.order(updated_at: "DESC") if current_member != @member
   end
 
   def edit
