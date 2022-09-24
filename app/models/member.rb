@@ -32,11 +32,4 @@ class Member < ApplicationRecord
     self.email != 'guest@example.com'
   end
 
-
-  def calc_age
-
-    Date.today.strftime("%Y%m%d").to_i/10000 - year_of_birth.to_i
-  end
-
-
 end
