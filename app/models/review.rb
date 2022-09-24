@@ -10,19 +10,19 @@ class Review < ApplicationRecord
   has_many :target_age_tags, through: :review_target_age_tags
 
   validates :review, length: {maximum: 3000}
-  scope :hoge, -> { where(hidden_status: false).where("LENGTH(review) >= ?", 1) }
+  scope :displayable, -> { where(hidden_status: false).where("LENGTH(review) >= ?", 1) }
 
   def self.search_for(parameter, keyword)
     if parameter == "title"
-      Review.where(hidden_status: false).where("LENGTH(review) >= ?", 1).where("title LIKE?", "%#{keyword}%")
+      Review.displayable.where("title LIKE?", "%#{keyword}%")
     elsif parameter == "author"
-      Review.where(hidden_status: false).where("LENGTH(review) >= ?", 1).where("author LIKE?", "%#{keyword}%")
+      Review.displayable.where("author LIKE?", "%#{keyword}%")
     elsif parameter == "publisherName"
-      Review.where(hidden_status: false).where("LENGTH(review) >= ?", 1).where("publisher LIKE?", "%#{keyword}%")
+      Review.displayable.where("publisher LIKE?", "%#{keyword}%")
     elsif parameter == "isbn"
-      Review.where(hidden_status: false).where("LENGTH(review) >= ?", 1).where(isbn_code: keyword)
+      Review.displayable.where(isbn_code: keyword)
     else
-      Review.howhere(hidden_status: false).where("LENGTH(review) >= ?", 1)
+      Review.displayable
     end
   end
 
