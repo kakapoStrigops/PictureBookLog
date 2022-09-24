@@ -5,11 +5,11 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @consideration_count = CandidatePost.where(member_id: @member.id, consideration_status: 0).count
-    @candidate_posts = CandidatePost.where(member_id: @member.id, consideration_status: 0).order(updated_at: "DESC").limit(3)
+    @consideration_count = CandidatePost.extract(@member, 0).count
+    @candidate_posts = CandidatePost.extract(@member, 0).recent(3)
     @review = Review.new
     @reviews = Review.where(member_id: @member.id).order(updated_at: "DESC") if current_member == @member
-    @reviews = Review.where(member_id: @member.id, hidden_status: false).where("LENGTH(review) >= ?", 1).order(updated_at: "DESC") if current_member != @member
+    @reviews = Review.where(member_id: @member.id).displayable.order(updated_at: "DESC") if current_member != @member
   end
 
   def edit
