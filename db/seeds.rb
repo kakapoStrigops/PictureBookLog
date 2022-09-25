@@ -10,14 +10,14 @@ Admin.find_or_create_by(email: ENV['ADMIN_EMAIL']) do |admin|
   admin.password = ENV['ADMIN_PASSWORD']
 end
 
-(0..9).each do |n|
+(0..99).each do |n|
   Member.find_or_create_by(email: "test#{n}@example.com") do |member|
     member.password = "123456"
     member.name = "test#{n}"
     member.name_kana = "test#{n}"
     member.nickname = "nickname#{n}"
-    member.year_of_birth = 1995 - n
-    member.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-member#{n}.png"), filename: "sample-member#{n}.png")
+    member.year_of_birth = 1999 - (n%20)
+    member.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-member#{n%10}.png"), filename: "sample-member#{n%10}.png")
   end
 end
 
