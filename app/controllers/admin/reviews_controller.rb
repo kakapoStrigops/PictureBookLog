@@ -3,7 +3,7 @@ class Admin::ReviewsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @reviews = Review.all.page(params[:page]).per(10)
+    @reviews = Review.all.page(params[:page])
   end
 
   def show
