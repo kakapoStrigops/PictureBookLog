@@ -153,3 +153,8 @@ end
     Review.find_or_create_by(test_review)
   end
 end
+
+(1..50).each do |n|
+  ReviewGenreTag.find_or_create_by(review_id: n, genre_tag_id: n%10)
+  ReviewTargetAgeTag.find_or_create_by(review_id: n, target_age_tag_id: (n+5)%10)
+end
