@@ -19,3 +19,7 @@ end
     member.year_of_birth = 1990
   end
 end
+
+(0..10).each do |n|
+  TargetAgeTag.find_or_create_by(target_age: "#{n}歳向け")
+end
