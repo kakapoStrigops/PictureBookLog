@@ -10,7 +10,7 @@ Admin.find_or_create_by(email: ENV['ADMIN_EMAIL']) do |admin|
   admin.password = ENV['ADMIN_PASSWORD']
 end
 
-(1..10).each do |n|
+(0..9).each do |n|
   Member.find_or_create_by(email: "test#{n}@example.com") do |member|
     member.password = "123456"
     member.name = "test#{n}"
