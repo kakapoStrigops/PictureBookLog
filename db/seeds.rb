@@ -21,11 +21,11 @@ end
   end
 end
 
-(0..10).each do |n|
+(0..9).each do |n|
   TargetAgeTag.find_or_create_by(target_age: "#{n}歳向け")
 end
 
-(0..10).each do |n|
+(0..9).each do |n|
   GenreTag.find_or_create_by(genre: "ジャンル#{n}")
 end
 
