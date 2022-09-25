@@ -55,6 +55,33 @@ end
       book_image_url:
        "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1109/9784032371109.jpg?_ex=120x120",
       rakuten_books_url: "https://books.rakuten.co.jp/rb/921996/"
+    },{
+      member_id: n,
+      title: "ねこは　るすばん",
+      author: "町田 尚子",
+      publisher: "ほるぷ出版",
+      date_of_publication: "2020年09月10日頃",
+      isbn_code: "9784593100965",
+      book_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0965/9784593100965.jpg?_ex=120x120",
+      rakuten_books_url: "https://books.rakuten.co.jp/rb/16376411/"
+    },{
+      member_id: n,
+      title: "コロちゃんのおさんぽ",
+      author: "エリック・ヒル/松川真弓",
+      publisher: "評論社",
+      date_of_publication: "1983年03月",
+      isbn_code: "9784566002074",
+      book_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2074/9784566002074.jpg?_ex=120x120",
+      rakuten_books_url: "https://books.rakuten.co.jp/rb/106436/"
+    }, {
+      member_id: n,
+      title: "ペンギンのおかいもの",
+      author: "坂崎千春",
+      publisher: "WAVE出版",
+      date_of_publication: "2014年10月",
+      isbn_code: "9784872909159",
+      book_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9159/9784872909159.jpg?_ex=120x120",
+      rakuten_books_url: "https://books.rakuten.co.jp/rb/12956106/"
     }
     ]
 
