@@ -10,16 +10,22 @@ Admin.find_or_create_by(email: ENV['ADMIN_EMAIL']) do |admin|
   admin.password = ENV['ADMIN_PASSWORD']
 end
 
-(0..100).each do |n|
-  Member.find_or_create_by(email: "test10#{n}@example.com") do |member|
+(1..10).each do |n|
+  Member.find_or_create_by(email: "test#{n}@example.com") do |member|
     member.password = "123456"
     member.name = "test#{n}"
     member.name_kana = "test#{n}"
     member.nickname = "nickname#{n}"
-    member.year_of_birth = 1990
+    member.year_of_birth = 1995 - n
+    member.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-member#{n}.png"), filename: "sample-member#{n}.png")
   end
 end
 
 (0..10).each do |n|
   TargetAgeTag.find_or_create_by(target_age: "#{n}歳向け")
 end
+
+(0..10).each do |n|
+  GenreTag.find_or_create_by(genre: "ジャンル#{n}")
+end
+
