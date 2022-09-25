@@ -89,3 +89,67 @@ end
     CandidatePost.find_or_create_by(test_post)
   end
 end
+
+(1..10).each do |n|
+  test_reviews = [
+    {
+      member_id: n,
+      review: "レビュー#{n}です。おすすめです。",
+      title: "しろくまちゃんのほっとけーき",
+      author: "若山憲",
+      publisher: "こぐま社",
+      date_of_publication: "1972年10月",
+      isbn_code: "9784772100311",
+      book_image_url:
+       "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0311/9784772100311.jpg?_ex=120x120",
+      rakuten_books_url: "https://books.rakuten.co.jp/rb/208362/"
+    },{
+      member_id: n,
+      review: "レビュー#{10+n}です。おすすめです。",
+      title: "ボードブック はらぺこあおむし",
+      author: "エリック・カール/もり　ひさし",
+      publisher: "偕成社",
+      date_of_publication: "2012年12月",
+      isbn_code: "9784032371109",
+      book_image_url:
+       "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1109/9784032371109.jpg?_ex=120x120",
+      rakuten_books_url: "https://books.rakuten.co.jp/rb/921996/"
+    },{
+      member_id: n,
+      review: "レビュー#{20+n}です。おすすめです。",
+      title: "ねこいる！",
+      author: "たなか　ひかる",
+      publisher: "ポプラ社",
+      date_of_publication: "2022年02月09日頃",
+      isbn_code: "9784591172308",
+      book_image_url:
+       "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2308/9784591172308_1_6.jpg?_ex=120x120",
+      rakuten_books_url: "https://books.rakuten.co.jp/rb/17012509/"
+    },{
+      member_id: n,
+      review: "レビュー#{30+n}です。おすすめです。",
+      title: "コロちゃんのおさんぽ",
+      author: "エリック・ヒル/松川真弓",
+      publisher: "評論社",
+      date_of_publication: "1983年03月",
+      isbn_code: "9784566002074",
+      book_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2074/9784566002074.jpg?_ex=120x120",
+      rakuten_books_url: "https://books.rakuten.co.jp/rb/106436/"
+    }, {
+      member_id: n,
+      review: "レビュー#{40+n}です。おすすめです。",
+      title: "わたしのワンピース",
+      author: "にしまき　かやこ",
+      publisher: "こぐま社",
+      date_of_publication: "1969年12月",
+      isbn_code: "9784772100182",
+      book_image_url:
+       "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0182/9784772100182_1_2.jpg?_ex=120x120",
+      rakuten_books_url: "https://books.rakuten.co.jp/rb/248699/"
+    }
+    ]
+
+  test_reviews.each do |test_review|
+    Review.find_or_create_by(test_review)
+  end
+end
