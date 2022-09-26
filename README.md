@@ -30,9 +30,9 @@
 - 他の人に絵本のお薦めをしたいとき
 
 ## 設計書
-- ER図（https://drive.google.com/file/d/1Ziv97VEDLkn_elFggkdPepUMcUJOez5R/view?usp=sharing）
-- テーブル定義書（https://docs.google.com/spreadsheets/d/1riFXMhdPgTCaUffmbZ05RuGwki-sRt66Emvt6stE12o/edit?usp=sharing）
-- 詳細設計書（作成中）
+- ER図　https://drive.google.com/file/d/1Ziv97VEDLkn_elFggkdPepUMcUJOez5R/view?usp=sharing
+- テーブル定義書　https://docs.google.com/spreadsheets/d/1riFXMhdPgTCaUffmbZ05RuGwki-sRt66Emvt6stE12o/edit?usp=sharing
+- 詳細設計書　https://docs.google.com/spreadsheets/d/1vs_0R3VFgu49sc5YBdT_kAQ8xsRlBRm_wp75e6p6WCY/edit#gid=549108681
 
 ## 開発環境
 - OS：Linux(CentOS)
