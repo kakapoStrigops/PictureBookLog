@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     resources :members, only: [:show, :edit, :update, :index]
     get "books/search" => "books#search"
     resources :candidate_posts, only: [:create, :index, :update, :destroy]
-    # resources :reviews, only: [:new, :create, :index, :show, :edit, :update]
     resources :reviews, only: [:create, :index, :show, :edit, :update, :destroy] do
       member do
         get 'new', as: 'new'
@@ -37,11 +36,11 @@ Rails.application.routes.draw do
     get '/' => "homes#top"
     resources :members, only: [:index, :show, :edit, :update]
     resources :reviews, only: [:index, :show, :edit, :update] do
-      resources :comments, only: [:index, :show, :edit, :update]
+      resources :comments, only: [:edit, :update]
     end
     resources :tags, only: [:index]
-    resources :genre_tags, only: [:new, :create, :edit, :update, :destroy]
-    resources :target_age_tags, only: [:new, :create, :edit, :update, :destroy]
+    resources :genre_tags, only: [:create, :edit, :update, :destroy]
+    resources :target_age_tags, only: [:create, :edit, :update, :destroy]
   end
 
 end
