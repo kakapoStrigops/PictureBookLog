@@ -10,5 +10,10 @@
 
   <!--購入検討リスト-->
   <%= render 'public/candidate_posts/index', candidate_posts: @candidate_posts %>
+  <ul class="pagination justify-content-center">
+    <il class="page-item">
+      <%= paginate @candidate_posts %>
+    </il>
+  </ul>
 
 </div>

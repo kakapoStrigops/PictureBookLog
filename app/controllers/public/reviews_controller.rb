@@ -21,9 +21,9 @@ class Public::ReviewsController < ApplicationController
   def index
     @parameter = params[:parameter]
     @keyword = params[:keyword]
-    @reviews = Review.search_for(@parameter, @keyword).order(updated_at: "DESC")
-    @reviews = @reviews.joins(:genre_tags).where(genre_tags: { id: params[:genre_tag_id] }).order(updated_at: "DESC") if params[:genre_tag_id].present?
-    @reviews = @reviews.joins(:target_age_tags).where(target_age_tags: { id: params[:target_age_tag_id] }).order(updated_at: "DESC") if params[:target_age_tag_id].present?
+    @reviews = Review.search_for(@parameter, @keyword).order(updated_at: "DESC").page(params[:page])
+    @reviews = @reviews.joins(:genre_tags).where(genre_tags: { id: params[:genre_tag_id] }).order(updated_at: "DESC").page(params[:page]) if params[:genre_tag_id].present?
+    @reviews = @reviews.joins(:target_age_tags).where(target_age_tags: { id: params[:target_age_tag_id] }).order(updated_at: "DESC").page(params[:page]) if params[:target_age_tag_id].present?
   end
 
   def show

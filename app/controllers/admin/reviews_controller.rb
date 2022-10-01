@@ -8,7 +8,7 @@ class Admin::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @comments = Comment.where(review_id: @review.id).page(params[:page]).per(10)
+    @comments = Comment.where(review_id: @review.id)
   end
 
   def edit
