@@ -38,9 +38,9 @@
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,Ruby,SQL
 - フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
 - IDE：Cloud9
-(追加予定　言語：JavaScript、JSライブラリ：jQuery)
+
+<br>(追加予定　言語：JavaScript、JSライブラリ：jQuery)
 
 ## 使用素材
 - LOGO MAKER　https://logo-maker.stores.jp/
