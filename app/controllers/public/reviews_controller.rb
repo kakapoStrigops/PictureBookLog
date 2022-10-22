@@ -27,23 +27,23 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
+    @review = Review.find_by(id: params[:id], hidden_status: false)
     @comments = Comment.where(review_id: @review.id, hidden_status: false)
     @comment = Comment.new
   end
 
   def edit
-    @review = Review.find(params[:id])
+    @review = Review.find_by(id: params[:id], member_id: current_member.id)
   end
 
   def update
-    @review = Review.find(params[:id])
+    @review = Review.find_by(id: params[:id], member_id: current_member.id)
     @review.update(review_params)
     redirect_to reviews_path
   end
 
   def destroy
-    @review = Review.find(params[:id])
+    @review = Review.find_by(id: params[:id], member_id: current_member.id)
     @review.destroy
     redirect_to reviews_path
   end
