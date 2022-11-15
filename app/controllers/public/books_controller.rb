@@ -10,19 +10,19 @@ class Public::BooksController < ApplicationController
     @keyword = params[:keyword]
     if @parameter == "title"
       @books = RakutenWebService::Books::Book.search({
-        title: @keyword, booksGenreId: '001003',hits: 20,
+        title: ('%' + @keyword + '%'), booksGenreId: '001003',hits: 20,
         })
     elsif @parameter == "author"
       @books = RakutenWebService::Books::Book.search({
-        author: @keyword, booksGenreId: '001003',hits: 20,
+        author: ('%' + @keyword + '%'), booksGenreId: '001003',hits: 20,
         })
     elsif @parameter == "publisherName"
       @books = RakutenWebService::Books::Book.search({
-        publisherName: @keyword, booksGenreId: '001003',hits: 20,
+        publisherName: ('%' + @keyword + '%'), booksGenreId: '001003',hits: 20,
         })
     elsif @parameter == "isbn"
       @books = RakutenWebService::Books::Book.search({
-        isbn: @keyword, booksGenreId: '001003',hits: 20,
+        isbn: ('%' + @keyword + '%'), booksGenreId: '001003',hits: 20,
         })
     end
   end
