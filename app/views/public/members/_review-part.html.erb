@@ -4,7 +4,7 @@
           <% reviews.each do |review| %>
           <li class="list-group-item">
             <div class="row">
-              <div class="col-2">
+              <div class="col-xl-3 col-lg-4 col-12">
                 <div class="card-body">
                   <div class="card-title">
                   <%= link_to (image_tag(review.book_image_url)), review.rakuten_books_url %>
@@ -13,13 +13,13 @@
                 </div>
               </div>
 
-              <div class="col-10">
+              <div class="col">
                 <div class="card-header bg-transparent">
                   <div class="row">
-                    <div class="col-7">
+                    <div class="col-12">
                       <h5 class="card-title"><strong><%= review.title %></strong></h5>
                     </div>
-                    <div class="col-5 mt-2">
+                    <div class="col mt-2">
                       <h6 class="card-subtitle">作者：<%= review.author %></h6>
                     </div>
                   </div>
