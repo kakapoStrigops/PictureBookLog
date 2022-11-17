@@ -3,14 +3,14 @@
   <% candidate_posts.each do |candidate_post| %>
     <li class="list-group-item">
       <div class="row">
-        <div class="col-3">
+        <div class="col-xl-3 col-lg-4 col-6">
           <!--購入検討ステータスとメモ書きの表示・編集フォーム-->
           <%= render 'public/candidate_posts/status-form', candidate_post: candidate_post %>
         </div>
-        <div class="col-2">
+        <div class="col-xl-2 col-lg-3 col-6">
           <%= link_to (image_tag(candidate_post.book_image_url)), candidate_post.rakuten_books_url %>
         </div>
-        <div class="col-7">
+        <div class="col">
           <h6><strong><%= candidate_post.title %></strong></h6>
           <h6>作者：<%= candidate_post.author %></h6>
           出版社：<%= candidate_post.publisher %>、
