@@ -36,6 +36,8 @@ ja:
         password: "パスワード"
       comment:
         comment: "コメント"
+      candidate_post:
+        memo: "メモ"
   views:
     pagination:
       first: "&laquo; 最初"
