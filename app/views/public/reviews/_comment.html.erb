@@ -24,7 +24,14 @@
     <% end %>
     <li class="list-group-item">
       <div class="card-title"> + コメントを投稿する</div>
-
+      <% if @comment.errors.any? %>
+        <%= @comment.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <%= form_with model: [review, @comment] do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control mb-1" %>
         <%= f.submit "投稿", class: "btn btn-success" %>

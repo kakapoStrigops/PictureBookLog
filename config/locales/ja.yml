@@ -25,6 +25,7 @@ ja:
   activerecord:
     models:
       member: "会員"
+      comment: "コメント"
     attributes:
       member:
         name: "名前"
@@ -33,6 +34,8 @@ ja:
         year_of_birth: "生まれ年"
         email: "メールアドレス"
         password: "パスワード"
+      comment:
+        comment: "コメント"
   views:
     pagination:
       first: "&laquo; 最初"

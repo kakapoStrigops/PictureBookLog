@@ -18,11 +18,3 @@
   </div>
   <%= link_to "レビュー一覧に戻る", reviews_path, class: "btn btn-outline-success" %>
 </div>
-      <% if @comment.errors.any? %>
-        <%= @comment.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
