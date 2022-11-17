@@ -14,8 +14,11 @@ class Public::ReviewsController < ApplicationController
 
   def post
     @review = Review.find(params[:id])
-    @review.update(review_params)
-    redirect_to reviews_path
+    if @review.update(review_params)
+      redirect_to reviews_path
+    else
+      render :new
+    end
   end
 
   def index

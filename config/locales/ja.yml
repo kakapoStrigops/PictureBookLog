@@ -38,6 +38,8 @@ ja:
         comment: "コメント"
       candidate_post:
         memo: "メモ"
+      review:
+        review: "レビュー"
   views:
     pagination:
       first: "&laquo; 最初"
