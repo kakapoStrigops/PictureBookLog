@@ -41,8 +41,11 @@ class Public::ReviewsController < ApplicationController
 
   def update
     @review = Review.find_by(id: params[:id], member_id: current_member.id)
-    @review.update(review_params)
-    redirect_to reviews_path
+    if @review.update(review_params)
+      redirect_to reviews_path
+    else
+      render :edit
+    end
   end
 
   def destroy
