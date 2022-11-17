@@ -12,7 +12,7 @@ class Public::CommentsController < ApplicationController
     else
       @review = Review.find_by(id: params[:review_id], hidden_status: false)
       @comments = Comment.where(review_id: review.id, hidden_status: false)
-      @comment = Comment.new
+      @comment = comment
       render template: "public/reviews/show"
     end
   end
