@@ -33,3 +33,10 @@ ja:
         year_of_birth: "生まれ年"
         email: "メールアドレス"
         password: "パスワード"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
