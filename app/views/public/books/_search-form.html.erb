@@ -1,10 +1,10 @@
 <!-- 楽天ブックスAPIを利用した絵本の検索フォーム -->
 <%= form_with url: books_search_path , method: :get, local: true do |f| %>
 <div class="row mb-5">
-  <div class="col-2">
+  <div class="col-xl-2 col-lg-3 col-md-4 col-12">
     <%= f.select :parameter,  [["タイトル","title"],["作者","author"],["出版社","publisherName"],["ISBNコード","isbn"]], class: "form-select" %>
   </div>
-  <div class="col-4">
+  <div class="col-xl-4 col-lg-6 col-md-7 col-12">
     <%= f.text_field :keyword, class: "form-control" %>
   </div>
   <div class="col-1">

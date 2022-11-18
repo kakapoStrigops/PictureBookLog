@@ -12,14 +12,18 @@ class Public::CandidatePostsController < ApplicationController
     @candidate_posts = CandidatePost.where(member_id: current_member.id).order(updated_at: "DESC").page(params[:page]).per(10)
     @candidate_posts = CandidatePost.extract(current_member, params[:consideration_status]).order(updated_at: "DESC").page(params[:page]).per(10) if params[:consideration_status].present?
     @review = Review.new
+    @candidate_post = CandidatePost.new
   end
 
   def update
     @candidate_post = CandidatePost.find(params[:id])
     if @candidate_post.update(candidate_post_params)
-     redirect_to candidate_posts_path
+      redirect_to candidate_posts_path
     else
-     render :index
+      @candidate_posts = CandidatePost.where(member_id: current_member.id).order(updated_at: "DESC").page(params[:page]).per(10)
+      @candidate_posts = CandidatePost.extract(current_member, params[:consideration_status]).order(updated_at: "DESC").page(params[:page]).per(10) if params[:consideration_status].present?
+      @review = Review.new
+      render :index
     end
   end
 

@@ -10,11 +10,11 @@
   </div>
 
   <div class="row mb-4">
-    <div class="col-3">
+    <div class="col-xl-3 col-lg-4 col-md-5 col-12">
       <!--会員情報-->
       <%= render 'public/members/info', member: @member %>
     </div>
-    <div class="col-9">
+    <div class="col">
       <!--本人の時のみ表示する本の検索フォーム及び検討リスト-->
       <%= render 'public/members/upper-part', member: @member,consideration_count: @consideration_count,candidate_posts: @candidate_posts %>
       <!--当会員が投稿したレビューの一覧-->

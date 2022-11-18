@@ -1,24 +1,50 @@
-  ja:
-    enums:
+ja:
+  enums:
+    member:
+      delete_status:
+        active: "有効"
+        withdrawal: "退会"
+    candidate_post:
+      consideration_status:
+        consideration: "購入検討中"
+        decision: "購入決定"
+        pending: "購入見送り（保留）"
+        purchased: "購入済み"
+    review:
+      hidden_status:
+        open: "公開"
+        hidden: "非公開"
+    comment:
+      hidden_status:
+        open: "公開"
+        hidden: "非公開"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%m/%d %H:%M"
+  activerecord:
+    models:
+      member: "会員"
+      comment: "コメント"
+    attributes:
       member:
-        delete_status:
-          active: "有効"
-          withdrawal: "退会"
-      candidate_post:
-        consideration_status:
-          consideration: "購入検討中"
-          decision: "購入決定"
-          pending: "購入見送り（保留）"
-          purchased: "購入済み"
-      review:
-        hidden_status:
-          open: "公開"
-          hidden: "非公開"
+        name: "名前"
+        name_kana: "フリガナ"
+        nickname: "ニックネーム"
+        year_of_birth: "生まれ年"
+        email: "メールアドレス"
+        password: "パスワード"
+        self_introduction: "自己紹介"
       comment:
-        hidden_status:
-          open: "公開"
-          hidden: "非公開"
-    time:
-      formats:
-        default: "%Y/%m/%d %H:%M:%S"
-        short: "%m/%d %H:%M"
+        comment: "コメント"
+      candidate_post:
+        memo: "メモ"
+      review:
+        review: "レビュー"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
