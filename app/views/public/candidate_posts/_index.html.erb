@@ -16,8 +16,10 @@
           出版社：<%= candidate_post.publisher %>、
           ISBN：<%= candidate_post.isbn_code %>、
           出版日：<%= candidate_post.date_of_publication %>
-          <!--レビュー投稿・詳細ボタン-->
-          <%= render 'public/candidate_posts/reviewing', review: @review, candidate_post: candidate_post %>
+          <div>
+            <!--レビュー投稿・詳細ボタン-->
+            <%= render 'public/candidate_posts/reviewing', review: @review, candidate_post: candidate_post %>
+          </div>
         </div>
       </div>
     </li>
