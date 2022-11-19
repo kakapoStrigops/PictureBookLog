@@ -5,11 +5,11 @@
     </div>
   </div>
 
-  <!--購入検討ステータスでの絞り込み検索フォーム-->
-  <%= render 'public/candidate_posts/search-form' %>
-
   <!-- メモ書きのバリデーションエラーメッセージ表示 -->
   <%= render 'layouts/error_msg', obj: @candidate_post %>
+
+  <!--購入検討ステータスでの絞り込み検索フォーム-->
+  <%= render 'public/candidate_posts/search-form' %>
 
   <!--購入検討リスト-->
   <%= render 'public/candidate_posts/index', candidate_posts: @candidate_posts %>
