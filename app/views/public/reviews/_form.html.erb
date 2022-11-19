@@ -1,11 +1,6 @@
-<% if review.errors.any? %>
-  <%= review.errors.count %>件のエラーが発生しました
-  <ul>
-    <% review.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<!-- レビュー投稿のバリデーションエラーメッセージ表示 -->
+<%= render 'layouts/error_msg', obj: review %>
+
 <div class="card mt-4 shadow mb-3">
   <div class="card-body">
 

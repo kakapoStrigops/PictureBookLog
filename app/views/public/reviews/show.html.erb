@@ -5,6 +5,9 @@
     </div>
   </div>
 
+  <!-- コメント投稿のバリデーションエラーメッセージ表示 -->
+  <%= render 'layouts/error_msg', obj: @comment %>
+
   <div class="row mb-4">
     <div class="col-8">
       <!--レビュー文と投稿者-->
