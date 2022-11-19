@@ -3,11 +3,11 @@
     <% review.comments.each do |comment| %>
     <li class="list-group-item">
       <div class="row">
-        <div class="col-6">
+        <div class="col-xl-6 col-md-8 col-12">
           <div class="card-text"><%= comment.comment %></div>
           （<%= l comment.created_at %>）
         </div>
-        <div class="col-2">
+        <div class="col-xl-2 col-md-4 col-12 col-2">
           <% if comment.member.profile_image.attached? %>
             <%= image_tag comment.member.profile_image, size: "60x60" %>
           <% else %>
@@ -16,7 +16,7 @@
           <br>
           <%= comment.member.nickname %>
         </div>
-        <div class="col-4">
+        <div class="col-xl-4 col-12">
           公開ステータス：
           <%= comment.hidden_status_i18n %><br>
           <%= link_to "ステータス変更", edit_admin_review_comment_path(comment.review.id, comment.id), class: "btn btn-outline-secondary btn-sm" %>

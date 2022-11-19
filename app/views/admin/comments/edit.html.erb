@@ -7,14 +7,14 @@
       <div class="card-body">
         <%= form_with model: @comment, url: admin_review_comment_path(@comment.review_id, @comment.id) do |f| %>
         <div class="row">
-          <div class="col-2">
+          <div class="col-lg-2 col-md-3 col-12">
             <strong>公開ステータス：</strong>
           </div>
-          <div class="col-2">
+          <div class="col-md-2">
             <%= f.radio_button :hidden_status, "open" %>
               <%= f.label :hidden_status, "公開" %>
           </div>
-          <div class="col-2">
+          <div class="col-md-2">
             <%= f.radio_button :hidden_status, "hidden" %>
               <%= f.label :hidden_status, "非公開" %>
           </div>
@@ -27,7 +27,7 @@
       </div>
       <div class="card-footer bg-transparent">
         <div class="row">
-          <div class="col-8">
+          <div class="col-md-8 col-12">
             <div class="card-body">
               <h4 class="card-title">対象のコメント</h4>
               <p class="card-text"><%= @comment.comment %></p>
@@ -41,7 +41,7 @@
             </div>
           </div>
 
-          <div class="col-4">
+          <div class="col-md-4 col-12">
             <div class="card-body">
               <div class="card-title">
               <%= link_to (image_tag(@comment.review.book_image_url)), @comment.review.rakuten_books_url %>

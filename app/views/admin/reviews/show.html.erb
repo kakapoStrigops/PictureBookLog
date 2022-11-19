@@ -6,13 +6,13 @@
   </div>
 
   <div class="row mb-4">
-    <div class="col-8">
+    <div class="col-md-8 col-12 mb-4">
       <!--レビュー文と投稿者-->
       <%= render 'admin/reviews/review', review: @review %>
       <h5 class="mt-4">■ コメント（<%= @review.comments.count %>件）</h5>
       <%= render 'admin/reviews/comment', review: @review %>
     </div>
-    <div class="col-4">
+    <div class="col-md-4 col-12">
       <%= render 'public/reviews/book', review: @review %>
     </div>
   </div>

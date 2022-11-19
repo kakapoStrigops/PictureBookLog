@@ -3,14 +3,14 @@
     <% comments.each do |comment| %>
     <li class="list-group-item">
       <div class="row">
-        <div class="col-10">
+        <div class="col-xl-10 col-lg-9 col-md-8 col-12">
           <div class="card-text"><%= comment.comment %></div>
           （<%= l comment.created_at %>）
           <% if comment.member == current_member %>
             <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, class: "btn btn-outline-secondary btn-sm" %>
           <% end %>
         </div>
-        <div class="col-2">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-12">
           <% if comment.member.profile_image.attached? %>
             <%= image_tag comment.member.profile_image, size: "60x60" %>
           <% else %>
@@ -24,9 +24,6 @@
     <% end %>
     <li class="list-group-item">
       <div class="card-title"> + コメントを投稿する</div>
-
-
-
       <%= form_with model: [review, @comment] do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control mb-1" %>
         <%= f.submit "投稿", class: "btn btn-success" %>
