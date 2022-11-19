@@ -1,10 +1,10 @@
 <h5><strong>タイトル・作者・出版社・ISBNで検索する</strong></h5>
 <%= form_with url: reviews_path, method: :get, local: true do |f| %>
 <div class="row mb-3">
-  <div class="col-2">
+  <div class="col-md-2 col-12">
   <%= f.select :parameter,  [["タイトル","title"],["作者","author"],["出版社","publisherName"],["ISBNコード","isbn"]], class: "form-select form-select-lg" %>
   </div>
-  <div class="col-4">
+  <div class="col-md-4 col-12">
   <%= f.text_field :keyword, class: "form-control" %>
   </div>
   <div class="col-1">
@@ -16,13 +16,15 @@
 <h5><strong>タグで検索する</strong></h5>
 <%= form_with url: reviews_path, method: :get, local: true do |f| %>
 <div class="row mb-3">
-  <div class="col-3">
+  <div class="col-md-3 col-12">
   ジャンル：
   <%= f.select("genre_tag_id", GenreTag.pluck(:genre, :id), { include_blank: "指定しない" }) %>
-  &emsp;&emsp;
+  </div>
+
+  <div class="col-1">
   ✖️
   </div>
-  <div class="col-3">
+  <div class="col-md-3 col-12">
   ️対象年齢：
   <%= f.select("target_age_tag_id", TargetAgeTag.pluck(:target_age, :id), { include_blank: "指定しない"}) %>
   </div>
